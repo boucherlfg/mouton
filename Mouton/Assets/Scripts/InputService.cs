@@ -1,0 +1,37 @@
+using System;
+using UnityEngine;
+
+public class InputService {
+    private Controls controls;
+    private Camera _mainCam;
+    public event Action Jumped;
+    public event Action PickedUp;
+    public event Action LeftDown;
+    public event Action Interacted;
+    public InputService() {
+        controls = new Controls();
+        controls.Player.Enable();
+
+        controls.Player.Jump.performed += HandleJump;
+        controls.Player.Pickup.performed += HandlePickup;
+        controls.Player.LeftClick.performed += HandleLeftDown;
+        controls.Player.Interact.performed += HandleInteract;
+    }
+
+    public void HandleInteract(UnityEngine.InputSystem.InputAction.CallbackContext callback) {
+        Interacted?.Invoke();       
+    }
+    public void HandleJump(UnityEngine.InputSystem.InputAction.CallbackContext callback) {
+        Jumped?.Invoke();       
+    }
+    public void HandlePickup(UnityEngine.InputSystem.InputAction.CallbackContext callback) {
+        PickedUp?.Invoke();
+    }
+    public void HandleLeftDown(UnityEngine.InputSystem.InputAction.CallbackContext callback) {
+        LeftDown?.Invoke();  
+    }
+    
+    public Vector2 ScreenMouse => controls.Player.MousePosition.ReadValue<Vector2>();
+    public Vector2 WorldMouse => (_mainCam ??= Camera.main).ScreenToWorldPoint(ScreenMouse);
+    public Vector2 Move => controls.Player.Move.ReadValue<Vector2>();
+}

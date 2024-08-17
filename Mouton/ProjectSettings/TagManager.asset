@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Food
   layers:
   - Default
   - TransparentFX
@@ -11,10 +13,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Items
+  - Sheep
+  - Plateforme
   - 
   - 
   - 
@@ -38,6 +40,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Mouton
+    uniqueID: 970648581
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Plateforme
+    uniqueID: 2517579251
+    locked: 0
+  - name: Player
+    uniqueID: 1987601991
+    locked: 0
+  - name: Items
+    uniqueID: 3057501771
     locked: 0
