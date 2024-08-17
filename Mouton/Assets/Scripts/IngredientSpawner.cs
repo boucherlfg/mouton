@@ -22,6 +22,8 @@ public class IngredientSpawner : MonoBehaviour
     }
 
     void OnDrawGizmosSelected() {
+        #if UNITY_EDITOR
         UnityEditor.Handles.DrawSolidRectangleWithOutline(new Rect(transform.position, transform.localScale), Vector4.zero, Color.red);
+        #endif
     }
 }
