@@ -25,6 +25,8 @@ public class HandScript : MonoBehaviour {
         if(!Activated) return;
         if(carried) {
             carried.GetComponent<Rigidbody2D>().simulated = true;
+            
+            if(carried.TryGetComponent(out FoodScript food2)) food2.Frozen = true;
             carried.transform.parent = null;
             carried = null;
         }
@@ -35,6 +37,7 @@ public class HandScript : MonoBehaviour {
         carried.transform.parent = hand;
         carried.transform.localPosition = Vector2.zero;
         carried.GetComponent<Rigidbody2D>().simulated = false;
+        if(carried.TryGetComponent(out FoodScript food)) food.Frozen = true;
     }
 
     void HandleThrow() {

@@ -1,3 +1,5 @@
+//#define GIBELOTTE
+
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,33 +12,28 @@ public class CraftingTable : MonoBehaviour
     [SerializeField]
     private Recipe defaultRecipe;
 
+    private HandScript hand;
     public void Interact() {
         var choice = recipes.Find(CanDoRecipe);
         if(choice) {
             Craft(choice);
             return;
         }
-        else if(ingredients.Count <= 1) {
-            DontCraft();
-        }
-        else {
+        #if GIBELOTTE
+        else if(ingredients.Count > 1) {
             Craft(defaultRecipe);
+        }
+        #endif
+        else {
+            DontCraft();
         }
         
     }
 
     private void DontCraft() {
-        ingredients.ForEach(ingredient => {
-            ingredient.GetComponent<Rigidbody2D>().gravityScale = 1;
-            foreach(var collider in ingredient.GetComponents<Collider2D>()) {
-                collider.enabled = true;
-                collider.GetComponent<ItemInteractivity>().Activated = false;
-                collider.GetComponent<FoodScript>().Frozen = false;
-            }
-        });
-        ingredients.Clear();
+        ingredients.ForEach(Drop);
     }
-  
+    
     private void Craft(Recipe recipe) {
         ingredients.ForEach(ingredient => {
             Destroy(ingredient.gameObject);
@@ -59,6 +56,11 @@ public class CraftingTable : MonoBehaviour
     }
 
     void Update() {
+        hand = hand ? hand : FindObjectOfType<HandScript>();
+        if(hand.carried && hand.carried.TryGetComponent(out Ingredient ingredient)) {
+            var choice = ingredients.Find(x => x == ingredient);
+            if(choice) Drop(ingredient);
+        }
         var targets = new Vector2[] { 
             (Vector2)transform.position + Vector2.up, 
             (Vector2)transform.position + Vector2.up + Vector2.left * 0.5f, 
@@ -73,15 +75,25 @@ public class CraftingTable : MonoBehaviour
         }
     }
 
+    void Add(Ingredient ingredient) {
+        
+        ingredient.GetComponent<FoodScript>().Frozen = true;
+        ingredient.GetComponent<Rigidbody2D>().gravityScale = 0;
+        ingredients.Add(ingredient);
+    }
+
+    void Drop(Ingredient ingredient) {
+        ingredient.GetComponent<Rigidbody2D>().gravityScale = 1;
+        ingredient.GetComponent<ItemInteractivity>().Activated = false;
+        ingredient.GetComponent<FoodScript>().Frozen = false;
+        ingredients.Remove(ingredient);
+    }
+
     void OnTriggerEnter2D(Collider2D other) {
         if(ingredients.Count >= 3) return;
         if(!other.TryGetComponent(out Ingredient ingredient)) return;
         if(!ingredient.Activated) return;
         if(ingredients.Contains(ingredient)) return;
-
-        ingredient.GetComponent<FoodScript>().Frozen = true;
-        ingredients.Add(ingredient);
-        ingredient.GetComponent<Rigidbody2D>().gravityScale = 0;
-        foreach(var collider in ingredient.GetComponents<Collider2D>()) collider.enabled = false;
+        Add(ingredient);
     }
 }

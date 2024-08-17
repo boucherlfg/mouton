@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EndGameScript : MonoBehaviour {
-    [Scene]
-    public string endScene;
     void Start() {
         ServiceManager.Instance.Get<OnGameEnded>().Subscribe(HandleGameEnded);
     }
@@ -12,8 +10,8 @@ public class EndGameScript : MonoBehaviour {
     }
     void HandleGameEnded() {
         var sheep = FindObjectOfType<SheepScript>();
-        PlayerPrefs.SetFloat("weight", sheep.weight);
-        PlayerPrefs.SetFloat("life", sheep.life);
-        SceneManager.LoadScene(endScene);
+        // PlayerPrefs.SetFloat("weight", sheep.weight);
+        // PlayerPrefs.SetFloat("life", sheep.life);
+        // SceneManager.LoadScene(endScene);
     }
 }

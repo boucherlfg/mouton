@@ -8,11 +8,14 @@ public class FoodScript : MonoBehaviour {
     public float freeze;
     public float lifeLoss;
     public float lifeLossTime;
-    public float foodLifetime = 60;
-    
+    public float foodLifetime = 30;
+    private float foodCounter = 0;
     void Update() {
-        if(Frozen) return;
-        foodLifetime -= Time.deltaTime;
-        if(foodLifetime < 0) Destroy(gameObject);       
+        if(Frozen) {
+            foodCounter = 0;
+            return;
+        }
+        foodCounter += Time.deltaTime;
+        if(foodCounter > foodLifetime) Destroy(gameObject);       
     }
 }

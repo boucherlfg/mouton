@@ -49,9 +49,9 @@ TagManager:
   - name: Plateforme
     uniqueID: 2517579251
     locked: 0
-  - name: Player
-    uniqueID: 1987601991
-    locked: 0
   - name: Items
     uniqueID: 3057501771
+    locked: 0
+  - name: Player
+    uniqueID: 1987601991
     locked: 0

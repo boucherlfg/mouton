@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class PlatformPickupable : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 3;
     private InputService _input;
     // Start is called before the first frame update
     void Start()
     {
         _input = ServiceManager.Instance.Get<InputService>();
         HandScript.Activated = false;
+        GetComponent<Collider2D>().enabled = false;
         _input.LeftDown += HandleLeftDown;
     }
 
     void HandleLeftDown() {
         HandScript.Activated = true;
+        GetComponent<Collider2D>().enabled = true;
         _input.LeftDown -= HandleLeftDown;
     }
     // Update is called once per frame
@@ -24,7 +24,6 @@ public class PlatformPickupable : MonoBehaviour
     {
         if(HandScript.Activated) return;
 
-        var mouse = _input.WorldMouse;
-        transform.position = Vector2.Lerp(transform.position, mouse, Time.deltaTime * speed);
+        transform.position = _input.WorldMouse;
     }
 }

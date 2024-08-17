@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 1462146289844259378}
   - component: {fileID: 1450784546400972884}
   - component: {fileID: 3143130821929621537}
+  - component: {fileID: 6298938494270870156}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -326,6 +327,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &6298938494270870156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844141182876113995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd41b5e55390b224286c62ea0ab14ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4924481149231264739
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,8 +577,9 @@ GameObject:
   - component: {fileID: 4796569933782477955}
   - component: {fileID: 8471894582139284761}
   - component: {fileID: 3527134723057107954}
+  - component: {fileID: 3928217626835664505}
   m_Layer: 6
-  m_Name: Circle
+  m_Name: Fox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -628,8 +642,8 @@ SpriteRenderer:
   m_SortingLayerID: 1987601991
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: -642729287, guid: 4d5a72b95ef13494bb87db2ad5c3e099, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -652,3 +666,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 1450784546400972884}
+--- !u!95 &3928217626835664505
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093209331832515285}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88982adcffa40734cb2381a62542111b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
