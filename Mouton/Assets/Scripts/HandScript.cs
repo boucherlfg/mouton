@@ -10,10 +10,15 @@ public class HandScript : MonoBehaviour {
     public float maxVelocity = 5;
     [SerializeField]
     private Transform hand;
-     void Start() {
+    void Start() {
         _input = ServiceManager.Instance.Get<InputService>();
         _input.PickedUp += OnPickedUp;
         _input.LeftDown += HandleThrow;
+    }
+
+    void OnDestroy() {
+        _input.PickedUp -= OnPickedUp;
+        _input.LeftDown -= HandleThrow;
     }
 
     void Pickup(Transform pickupable) {
@@ -47,6 +52,7 @@ public class HandScript : MonoBehaviour {
         body.velocity = v0 * delta.normalized;
         
     }
+  
     void OnPickedUp() {
         if(!Activated) return;
 

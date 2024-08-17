@@ -21,10 +21,15 @@ public class JumpScript : MonoBehaviour
         FootScript.TouchedGround += HandleTouchedGround;
     }
 
+    void OnDestroy() {
+        inputService.Jumped -= HandleJump;
+        FootScript.TouchedGround -= HandleTouchedGround;
+    }
 
     void HandleTouchedGround() {
         jumping = false;
     }
+
     void HandleJump() {
         if(jumping) return;
         jumping = true;

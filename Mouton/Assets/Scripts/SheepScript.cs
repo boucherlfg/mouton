@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,8 @@ public class SheepScript : MonoBehaviour
             this.lifeLossTime = lifeLossTime;
         }
     }
-    private float weight = 0;
-    private float life = 120;
+    public float weight = 0;
+    public float life = 120;
     private float baseLifeLoss = 1;
     private float freeze = 60;
     private List<TemporaryLifeLoss> lifeLosses = new();
@@ -34,6 +35,11 @@ public class SheepScript : MonoBehaviour
 
         var log = Mathf.Log(weight + 1);
         body.localScale = (1 + log * log) * Vector3.one;
+
+        life -= lifeLoss * Time.deltaTime;
+        life -= Time.deltaTime;
+
+        if(life < 0) ServiceManager.Instance.Get<OnGameEnded>().Invoke();
     }
 
     void Eat(FoodScript food) {

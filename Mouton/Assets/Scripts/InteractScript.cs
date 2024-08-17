@@ -8,6 +8,10 @@ public class InteractScript : MonoBehaviour {
         _inputService.Interacted += OnInteracted;
     }
 
+    void OnDestroy() {
+        _inputService.Interacted -= OnInteracted;
+    }
+    
     void OnInteracted() {
         var choice = Physics2D.OverlapCircleAll(transform.position, 1)
                             .Where(x => x.GetComponent<CraftingTable>())

@@ -31,6 +31,7 @@ public class CraftingTable : MonoBehaviour
             foreach(var collider in ingredient.GetComponents<Collider2D>()) {
                 collider.enabled = true;
                 collider.GetComponent<ItemInteractivity>().Activated = false;
+                collider.GetComponent<FoodScript>().Frozen = false;
             }
         });
         ingredients.Clear();
@@ -78,6 +79,7 @@ public class CraftingTable : MonoBehaviour
         if(!ingredient.Activated) return;
         if(ingredients.Contains(ingredient)) return;
 
+        ingredient.GetComponent<FoodScript>().Frozen = true;
         ingredients.Add(ingredient);
         ingredient.GetComponent<Rigidbody2D>().gravityScale = 0;
         foreach(var collider in ingredient.GetComponents<Collider2D>()) collider.enabled = false;

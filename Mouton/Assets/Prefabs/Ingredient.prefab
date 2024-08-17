@@ -192,7 +192,7 @@ MonoBehaviour:
   freeze: 1
   lifeLoss: 1
   lifeLossTime: 1
-  foodLifetime: 60
+  foodLifetime: 15
 --- !u!58 &819828882501513429
 CircleCollider2D:
   m_ObjectHideFlags: 0
