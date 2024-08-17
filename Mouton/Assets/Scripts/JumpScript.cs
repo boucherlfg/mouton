@@ -10,7 +10,7 @@ public class JumpScript : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private InputService inputService;
-    private bool jumping = false;
+    public bool isJumping = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +27,12 @@ public class JumpScript : MonoBehaviour
     }
 
     void HandleTouchedGround() {
-        jumping = false;
+        isJumping = false;
     }
 
     void HandleJump() {
-        if(jumping) return;
-        jumping = true;
+        if(isJumping) return;
+        isJumping = true;
         _rigidbody2D.velocity = Vector2.right * _rigidbody2D.velocity.x + jumpHeight * Vector2.up;
     }
 }

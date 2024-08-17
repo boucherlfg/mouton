@@ -7,7 +7,7 @@ public class EndGameMenu : MonoBehaviour {
     public void Start() {
         var sheep = FindObjectOfType<SheepScript>();
         var weight = sheep.weight;
-        var life = sheep.life;
+        var life = sheep.baseLife;
         var currentLife = sheep.currentLife;
 
         this.weight.text = "your sheep weights " + Mathf.Round(weight) + " kg";

@@ -15,11 +15,12 @@ public class SheepScript : MonoBehaviour
         }
     }
     public float weight = 0;
-    public float life = 120;
+    public float baseLife = 120;
     [HideInInspector]
     public float currentLife;
+    [SerializeField]
     private float baseLifeLoss = 1;
-    private float freeze = 60;
+    public float freeze = 60;
     private List<TemporaryLifeLoss> lifeLosses = new();
     private bool isDead;
     [SerializeField]
@@ -33,18 +34,24 @@ public class SheepScript : MonoBehaviour
     }
 
     void Start() {
-        currentLife = life;
+        currentLife = baseLife;
     }
     void Update() {
+        
+        var log = Mathf.Log(weight + 1);
+        log = (1 + log * log);
+        float size = body.localScale.x;
+        float delta = log - size;
+        if(Mathf.Abs(delta) > Time.deltaTime) size += Mathf.Sign(delta) * Time.deltaTime;
+        body.localScale = size * Vector3.one;
         if(isDead) return;
-        if(freeze > 0) freeze -= Time.deltaTime;
+        
+        freeze -= Time.deltaTime;
+        if(freeze > 0)  return;
 
         var lifeLoss = lifeLosses.Aggregate(baseLifeLoss, (current, i) => current + i.lifeLoss);
         lifeLosses.ForEach(l => l.lifeLossTime -= Time.deltaTime);
         lifeLosses.RemoveAll(l => l.lifeLossTime <= 0);
-
-        var log = Mathf.Log(weight + 1);
-        body.localScale = (1 + log * log) * Vector3.one;
 
         currentLife -= lifeLoss * Time.deltaTime;
         currentLife -= Time.deltaTime;
@@ -58,7 +65,6 @@ public class SheepScript : MonoBehaviour
     }
    
    void Eat(FoodScript food) {
-        body.localScale += Vector3.one;
         freeze += food.freeze;
         currentLife += food.life;
         weight += food.weight;

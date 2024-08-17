@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a463f013505a744b81bdb52195e075, type: 3}
+  m_Name: SpagBolognaise
+  m_EditorClassIdentifier: 
+  prepTime: 4
+  inputs:
+  - {fileID: 742365941954371315, guid: fb1e27700f30b774fa0f07c74ddd15ec, type: 3}
+  - {fileID: 742365941954371315, guid: 53533d05b2bd7894fa18e62d0ab2bebb, type: 3}
+  - {fileID: 742365941954371315, guid: 421028713bc32444d93caead592f82a3, type: 3}
+  outputs:
+  - {fileID: 6588101436552229053, guid: 5144447463268564694a9fbd44170618, type: 3}

@@ -27,11 +27,11 @@ public class CraftingTable : MonoBehaviour
         else {
             DontCraft();
         }
-        
     }
 
     private void DontCraft() {
         ingredients.ForEach(Drop);
+        ingredients.Clear();
     }
     
     private void Craft(Recipe recipe) {
@@ -41,25 +41,30 @@ public class CraftingTable : MonoBehaviour
         ingredients.Clear();
 
         foreach(var output in recipe.outputs) {
-            var result = Instantiate(output.gameObject, transform.position, Quaternion.identity);
+            var result = Instantiate(output, transform.position, Quaternion.identity);
             result.GetComponent<Rigidbody2D>().velocity = Vector2.up * 3 + Random.insideUnitCircle;
         }
     }
 
     bool CanDoRecipe(Recipe recipe) {
-        foreach(var input in recipe.inputs) {
-            var inputCount = recipe.inputs.Count(x => x.type == input.type);
-            var ingredientCount = ingredients.Count(x => x.type == input.type);
-            if(inputCount > ingredientCount) return false;
+        var recipeDict = new Dictionary<IngredientType, int>();
+        recipe.inputs.ToList().ForEach(x => recipeDict[x.type] = recipeDict.ContainsKey(x.type) ? recipeDict[x.type] + 1 : 1);
+
+        var ingredientsDict = new Dictionary<IngredientType, int>();
+        ingredients.ToList().ForEach(x => ingredientsDict[x.type] = ingredientsDict.ContainsKey(x.type) ? ingredientsDict[x.type] + 1 : 1);
+
+        foreach(var key in recipeDict.Keys) {
+            if(!ingredientsDict.ContainsKey(key) || ingredientsDict[key] != recipeDict[key]) return false;
         }
-        return true;
+
+        return ingredientsDict.Count == recipeDict.Count;
     }
 
     void Update() {
         hand = hand ? hand : FindObjectOfType<HandScript>();
         if(hand.carried && hand.carried.TryGetComponent(out Ingredient ingredient)) {
             var choice = ingredients.Find(x => x == ingredient);
-            if(choice) Drop(ingredient);
+            if(choice) { Drop(ingredient); ingredients.Remove(ingredient); }
         }
         var targets = new Vector2[] { 
             (Vector2)transform.position + Vector2.up, 
@@ -77,7 +82,7 @@ public class CraftingTable : MonoBehaviour
 
     void Add(Ingredient ingredient) {
         
-        ingredient.GetComponent<FoodScript>().Frozen = true;
+        ingredient.GetComponent<Ingredient>().Frozen = true;
         ingredient.GetComponent<Rigidbody2D>().gravityScale = 0;
         ingredients.Add(ingredient);
     }
@@ -85,8 +90,7 @@ public class CraftingTable : MonoBehaviour
     void Drop(Ingredient ingredient) {
         ingredient.GetComponent<Rigidbody2D>().gravityScale = 1;
         ingredient.GetComponent<ItemInteractivity>().Activated = false;
-        ingredient.GetComponent<FoodScript>().Frozen = false;
-        ingredients.Remove(ingredient);
+        ingredient.GetComponent<Ingredient>().Frozen = false;
     }
 
     void OnTriggerEnter2D(Collider2D other) {

@@ -7,6 +7,8 @@ public class MoveScript : MonoBehaviour
     private Rigidbody2D _rigidBody;
     private InputService _inputService;
 
+    public bool YAxisMove {get;set;}
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,10 @@ public class MoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var move = (_inputService.Move * Vector2.right).normalized;
-        _rigidBody.velocity = move * speed + _rigidBody.velocity.y * Vector2.up;
+        var move = _inputService.Move.normalized;
+        var xMove = (move.x * Vector2.right).normalized.x;
+        var yMove = YAxisMove ? move.y * speed : _rigidBody.velocity.y;
+        
+        _rigidBody.velocity = xMove * speed * Vector2.right + yMove * Vector2.up;
     }
 }

@@ -11,7 +11,7 @@ public class ItemInteractivity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<FoodScript>().Activated = Activated;
-        GetComponent<Ingredient>().Activated = Activated;
+        if(TryGetComponent(out FoodScript food)) food.Activated = Activated;
+        if(TryGetComponent(out Ingredient ingredient)) ingredient.Activated = Activated;
     }
 }
