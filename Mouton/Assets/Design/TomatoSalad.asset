@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06a463f013505a744b81bdb52195e075, type: 3}
-  m_Name: Block
+  m_Name: TomatoSalad
   m_EditorClassIdentifier: 
   prepTime: 1.5
   inputs:
-  - {fileID: 742365941954371315, guid: 5791e63bfd1a9c54982fd0d1699a9546, type: 3}
-  - {fileID: 742365941954371315, guid: 5791e63bfd1a9c54982fd0d1699a9546, type: 3}
+  - {fileID: 742365941954371315, guid: ccc3f2e7f9127c84580f889d847acbaf, type: 3}
+  - {fileID: 742365941954371315, guid: 68b3a1603d7410241b5409faba6afc7d, type: 3}
   outputs:
-  - {fileID: 6034388365790914188, guid: 5e653124f1dd3bd41b084defbdc1c2be, type: 3}
+  - {fileID: 6588101436552229053, guid: 199216ef74d5fdd4c820c1fce0e92364, type: 3}

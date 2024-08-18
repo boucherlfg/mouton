@@ -14,10 +14,11 @@ GameObject:
   - component: {fileID: 3118179383907408585}
   - component: {fileID: 770723073150600671}
   - component: {fileID: 819828882501513429}
+  - component: {fileID: 742365941954371315}
   - component: {fileID: 2994056943667216363}
-  - component: {fileID: 6557238879954553068}
+  - component: {fileID: -3616903807474111147}
   m_Layer: 7
-  m_Name: CheeseBurger
+  m_Name: TomatoSalad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +37,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4866824023204510382}
+  - {fileID: 6867084175431407783}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &567132251228535257
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: -1237465525
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1055091780, guid: a8597c203633b4d439b190f7cca58a18, type: 3}
+  m_Sprite: {fileID: -474616433, guid: a8597c203633b4d439b190f7cca58a18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,11 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ff6b08126b5344db9563cfe22b7111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 200
-  life: 50
-  freeze: 0
-  lifeLoss: 15
-  lifeLossTime: 3
+  weight: 10
+  life: 60
+  freeze: 3
+  lifeLoss: 0.5
+  lifeLossTime: 2
 --- !u!58 &819828882501513429
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -182,6 +183,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &742365941954371315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6588101436552229053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d131933f2facec40878039922a6308b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodLifetime: 30
+  type: 9
 --- !u!114 &2994056943667216363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0918e60c4fb3a14c94c5a24851b8d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &6557238879954553068
+--- !u!58 &-3616903807474111147
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,7 +244,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!1001 &8299192299904498992
+--- !u!1001 &8064259636301946681
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -280,7 +295,7 @@ PrefabInstance:
     - target: {fileID: 4131916344009545308, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1055091780, guid: a8597c203633b4d439b190f7cca58a18, type: 3}
+      objectReference: {fileID: -474616433, guid: a8597c203633b4d439b190f7cca58a18, type: 3}
     - target: {fileID: 8559643272122008740, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
       propertyPath: m_Name
       value: Circle
@@ -290,8 +305,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
---- !u!4 &4866824023204510382 stripped
+--- !u!4 &6867084175431407783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3505711208454408094, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
-  m_PrefabInstance: {fileID: 8299192299904498992}
+  m_PrefabInstance: {fileID: 8064259636301946681}
   m_PrefabAsset: {fileID: 0}

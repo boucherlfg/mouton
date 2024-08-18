@@ -13,6 +13,9 @@ public class IngredientSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ingredientSpawnDelay -= Time.deltaTime;
+        if(ingredientSpawnDelay > 0) return;
+        
         counter += Time.deltaTime;
         if(counter < spawnRate) return;
         counter = 0;

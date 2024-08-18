@@ -63,7 +63,8 @@ public class SheepScript : MonoBehaviour
         if(isDead) return;
         
         freeze -= Time.deltaTime;
-        if(freeze > 0)  return;
+        freeze = Mathf.Max(0, freeze);
+        if(freeze > 0.01f)  return;
 
         var lifeLoss = lifeLosses.Aggregate(baseLifeLoss, (current, i) => current + i.lifeLoss);
         lifeLosses.ForEach(l => l.lifeLossTime -= Time.deltaTime);

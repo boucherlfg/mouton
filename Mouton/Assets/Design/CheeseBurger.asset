@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06a463f013505a744b81bdb52195e075, type: 3}
   m_Name: CheeseBurger
   m_EditorClassIdentifier: 
-  prepTime: 2
+  prepTime: 3
   inputs:
   - {fileID: 742365941954371315, guid: 33aa8ea6d16d31448a828ae8e5da3e8b, type: 3}
   - {fileID: 742365941954371315, guid: 373dca93e51d8c5498cfd74295120455, type: 3}
