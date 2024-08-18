@@ -6,6 +6,7 @@ public class HealthDisplay : MonoBehaviour
 {
     private Animator animator;
     public float unhealthyPercent = 0.25f;
+    public TMPro.TMP_Text label;
     private SheepScript sheep;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,8 @@ public class HealthDisplay : MonoBehaviour
         var currentLife = sheep.currentLife;
         var baseLife = sheep.baseLife;
         var scale = Mathf.Min(currentLife / baseLife, 1);
+        
+        label.text = "" + Mathf.Round(currentLife);
         GetComponent<RectTransform>().localScale = scale * Vector3.one;
 
         if(sheep.freeze > 0) animator.Play("Frozen");
