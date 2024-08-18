@@ -10,6 +10,7 @@ public class CraftingTable : MonoBehaviour
     public AudioClip goodRecipe;
     public AudioClip badRecipe;
     public AudioClip placeItem;
+    public AudioClip done;
 
     private Animator animator;
     private List<Ingredient> ingredients = new();
@@ -23,7 +24,6 @@ public class CraftingTable : MonoBehaviour
         if(Working) return;
         var choice = recipes.Find(CanDoRecipe);
         if(choice) {
-            AudioSource.PlayClipAtPoint(goodRecipe, transform.position);
             StartCoroutine(Craft(choice));
             return;
         }
@@ -50,9 +50,11 @@ public class CraftingTable : MonoBehaviour
         });
         ingredients.Clear();
 
+        AudioSource.PlayClipAtPoint(goodRecipe, transform.position);
         animator.Play("Brewing");
         yield return new WaitForSeconds(recipe.prepTime);
         animator.Play("Idle");
+        AudioSource.PlayClipAtPoint(done, transform.position);
 
         Working = false;
         foreach(var output in recipe.outputs) {
