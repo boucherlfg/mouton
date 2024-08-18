@@ -145,8 +145,8 @@ MonoBehaviour:
   weight: 200
   life: 50
   freeze: 0
-  lifeLoss: 15
-  lifeLossTime: 3
+  lifeLoss: 3
+  lifeLossTime: 15
 --- !u!58 &819828882501513429
 CircleCollider2D:
   m_ObjectHideFlags: 0

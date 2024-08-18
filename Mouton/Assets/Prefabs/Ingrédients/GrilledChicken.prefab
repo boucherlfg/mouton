@@ -144,10 +144,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 30
-  life: 10
+  life: 12
   freeze: 0
-  lifeLoss: 8
-  lifeLossTime: 2
+  lifeLoss: 4
+  lifeLossTime: 4
 --- !u!58 &819828882501513429
 CircleCollider2D:
   m_ObjectHideFlags: 0
