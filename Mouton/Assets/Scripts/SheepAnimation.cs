@@ -32,10 +32,4 @@ public class SheepAnimation : MonoBehaviour
     {
         animator.Play("Eat");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

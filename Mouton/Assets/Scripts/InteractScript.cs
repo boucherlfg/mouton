@@ -8,6 +8,7 @@ public class InteractScript : MonoBehaviour {
         _inputService.Interacted += OnInteracted;
     }
 
+
     void OnDestroy() {
         _inputService.Interacted -= OnInteracted;
     }

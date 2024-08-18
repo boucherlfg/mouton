@@ -1,11 +1,13 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class SheepScript : MonoBehaviour
-{
+{   
+    public AudioClip sheepBah;
+    public AudioClip sheepFood;
+    public AudioClip sheepDead;
     public class TemporaryLifeLoss {
         public float lifeLoss;
         public float lifeLossTime;
@@ -35,11 +37,21 @@ public class SheepScript : MonoBehaviour
 
     void Start() {
         currentLife = baseLife;
+        StartCoroutine(RandomBah());
+    }
+
+    IEnumerator RandomBah() 
+    {
+        while(true) {
+            var ranomTime = Random.Range(25, 100);
+            yield return new WaitForSeconds(ranomTime);
+            if(currentLife < 0) break;
+            AudioSource.PlayClipAtPoint(sheepBah, transform.position);
+        }
     }
     void Update() {
-        
         var log = Mathf.Log(weight + 1);
-        log = (1 + log * log);
+        log = 1 + log * log;
         float size = body.localScale.x;
         float delta = log - size;
         if(Mathf.Abs(delta) > Time.deltaTime) size += Mathf.Sign(delta) * Time.deltaTime;
@@ -61,10 +73,12 @@ public class SheepScript : MonoBehaviour
     
     public void Die() {
         isDead = true;
+        AudioSource.PlayClipAtPoint(sheepDead, transform.position);
         ServiceManager.Instance.Get<OnGameEnded>().Invoke();
     }
    
    void Eat(FoodScript food) {
+        AudioSource.PlayClipAtPoint(sheepFood, transform.position);
         freeze += food.freeze;
         currentLife += food.life;
         weight += food.weight;

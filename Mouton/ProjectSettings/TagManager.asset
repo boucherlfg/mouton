@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Paysage
+    uniqueID: 697638747
+    locked: 0
   - name: Mouton
     uniqueID: 970648581
     locked: 0

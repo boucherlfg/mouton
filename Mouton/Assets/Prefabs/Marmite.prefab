@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c984ff34b74eb2439096421a0281eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goodRecipe: {fileID: 0}
+  badRecipe: {fileID: 0}
+  placeItem: {fileID: 0}
   recipes:
   - {fileID: 11400000, guid: 441f9516a01f43644a68294be76d288d, type: 2}
   - {fileID: 11400000, guid: cd8a584dcbfb7ad49b49e59737326c47, type: 2}
@@ -110,6 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7496618203865623724}
   - component: {fileID: 8915051826024739297}
+  - component: {fileID: 885222126392138426}
   m_Layer: 0
   m_Name: MarmiteVisuel
   m_TagString: Untagged
@@ -184,3 +188,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &885222126392138426
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9085162137751621447}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: af4339f112b1d91488645719a095c26a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

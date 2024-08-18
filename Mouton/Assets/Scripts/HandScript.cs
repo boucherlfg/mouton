@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class HandScript : MonoBehaviour {
     public static bool Activated {get;set;} = true;
+    public AudioClip pickupSound;
+    public AudioClip throwSound;
+
     private InputService _input;
     [HideInInspector]
     public Transform carried;
@@ -33,6 +36,7 @@ public class HandScript : MonoBehaviour {
 
         if(!pickupable) return;
 
+        AudioSource.PlayClipAtPoint(pickupSound, transform.position);
         carried = pickupable.transform;
         carried.transform.parent = hand;
         carried.transform.localPosition = Vector2.zero;
@@ -58,15 +62,15 @@ public class HandScript : MonoBehaviour {
   
     void OnPickedUp() {
         if(!Activated) return;
-
-        var hit = Physics2D.OverlapCircleAll(transform.position, 0.5f)
+        var closest = Physics2D.OverlapCircleAll(transform.position, 0.5f)
                            .Where(x => x.GetComponent<PickUpable>() && (!carried || x.transform != carried.transform))
                            .OrderBy(x => Vector2.Distance(x.transform.position, transform.position)).FirstOrDefault();
-        if(!hit) {
+        
+        if(!closest) {
             Pickup(null);
             return;
         }
 
-        Pickup(hit.transform);
+        Pickup(closest.transform);
     }
 }

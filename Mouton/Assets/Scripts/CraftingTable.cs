@@ -1,22 +1,30 @@
 //#define GIBELOTTE
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class CraftingTable : MonoBehaviour
 {
+    public AudioClip goodRecipe;
+    public AudioClip badRecipe;
+    public AudioClip placeItem;
+
+    private Animator animator;
     private List<Ingredient> ingredients = new();
     [SerializeField]
     private List<Recipe> recipes = new();
     [SerializeField]
     private Recipe defaultRecipe;
-
+    public bool Working {get; private set;}
     private HandScript hand;
     public void Interact() {
+        if(Working) return;
         var choice = recipes.Find(CanDoRecipe);
         if(choice) {
-            Craft(choice);
+            AudioSource.PlayClipAtPoint(goodRecipe, transform.position);
+            StartCoroutine(Craft(choice));
             return;
         }
         #if GIBELOTTE
@@ -25,6 +33,7 @@ public class CraftingTable : MonoBehaviour
         }
         #endif
         else {
+            AudioSource.PlayClipAtPoint(badRecipe, transform.position);
             DontCraft();
         }
     }
@@ -34,12 +43,18 @@ public class CraftingTable : MonoBehaviour
         ingredients.Clear();
     }
     
-    private void Craft(Recipe recipe) {
+    private IEnumerator Craft(Recipe recipe) {
+        Working = true;
         ingredients.ForEach(ingredient => {
             Destroy(ingredient.gameObject);
         });
         ingredients.Clear();
 
+        animator.Play("Brewing");
+        yield return new WaitForSeconds(recipe.prepTime);
+        animator.Play("Idle");
+
+        Working = false;
         foreach(var output in recipe.outputs) {
             var result = Instantiate(output, transform.position, Quaternion.identity);
             result.GetComponent<Rigidbody2D>().velocity = Vector2.up * 3 + Random.insideUnitCircle;
@@ -58,6 +73,10 @@ public class CraftingTable : MonoBehaviour
         }
 
         return ingredientsDict.Count == recipeDict.Count;
+    }
+
+    void Start() {
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update() {
@@ -81,7 +100,6 @@ public class CraftingTable : MonoBehaviour
     }
 
     void Add(Ingredient ingredient) {
-        
         ingredient.GetComponent<Ingredient>().Frozen = true;
         ingredient.GetComponent<Rigidbody2D>().gravityScale = 0;
         ingredients.Add(ingredient);
@@ -94,10 +112,13 @@ public class CraftingTable : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
+        if(Working) return;
         if(ingredients.Count >= 3) return;
         if(!other.TryGetComponent(out Ingredient ingredient)) return;
         if(!ingredient.Activated) return;
         if(ingredients.Contains(ingredient)) return;
+
+        AudioSource.PlayClipAtPoint(placeItem, transform.position);
         Add(ingredient);
     }
 }
