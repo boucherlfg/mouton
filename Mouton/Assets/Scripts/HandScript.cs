@@ -47,7 +47,7 @@ public class HandScript : MonoBehaviour {
 
         // -------------- HOVERED
         if(!this.Hovered) Hovered = null;
-        
+
         if(!this.accessible.Contains(this.Hovered)) {
             this.Hovered = null;
         }
@@ -113,6 +113,7 @@ public class HandScript : MonoBehaviour {
     }
   
     bool OnPickedUp() {
+        if(carried) return false;
         var mousePos = _input.WorldMouse;
         var closest = Physics2D.OverlapCircleAll(mousePos, 0.4f)
                             .Where(x => x.GetComponent<PickUpable>() && (!carried || x.transform != carried.transform))
