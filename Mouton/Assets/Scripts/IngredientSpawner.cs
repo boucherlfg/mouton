@@ -8,6 +8,7 @@ public class IngredientSpawner : MonoBehaviour
     public float spawnRate;
     private float counter;
 
+    void Start() => counter = spawnRate;
     // Update is called once per frame
     void Update()
     {

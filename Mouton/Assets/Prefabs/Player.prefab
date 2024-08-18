@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6c92685f921b84a8daf08d51b9775c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 6
 --- !u!114 &6886399604760240648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupSound: {fileID: 8300000, guid: 48206c4503f1c8d4c9cdfade8cf12588, type: 3}
   throwSound: {fileID: 8300000, guid: faea92bbe1a555b45b08b24570a0059f, type: 3}
-  hintPrefab: {fileID: 2686132075189769373, guid: e16433a7f1f4f584896a1b2d0f9567bd, type: 3}
+  closest: {fileID: 0}
   carried: {fileID: 0}
   maxHeight: 2
   maxVelocity: 10
@@ -399,7 +399,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd41b5e55390b224286c62ea0ab14ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintPrefab: {fileID: 2686132075189769373, guid: c8497efee0f079245ba9c98adda33856, type: 3}
 --- !u!61 &6797012660496563440
 BoxCollider2D:
   m_ObjectHideFlags: 0
