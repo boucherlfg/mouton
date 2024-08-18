@@ -30,8 +30,8 @@ public class InputService {
     public void HandleLeftDown(UnityEngine.InputSystem.InputAction.CallbackContext callback) {
         LeftDown?.Invoke();  
     }
-    
+    public Camera MainCam => _mainCam ? _mainCam : _mainCam = Camera.main;   
     public Vector2 ScreenMouse => controls.Player.MousePosition.ReadValue<Vector2>();
-    public Vector2 WorldMouse => (_mainCam ??= Camera.main).ScreenToWorldPoint(ScreenMouse);
+    public Vector2 WorldMouse => MainCam.ScreenToWorldPoint(ScreenMouse);
     public Vector2 Move => controls.Player.Move.ReadValue<Vector2>();
 }
