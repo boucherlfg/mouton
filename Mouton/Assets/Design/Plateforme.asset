@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prepTime: 3
   inputs:
-  - {fileID: 742365941954371315, guid: 8aa8cd09360416b4a9176d3844709e55, type: 3}
-  - {fileID: 742365941954371315, guid: 33aa8ea6d16d31448a828ae8e5da3e8b, type: 3}
+  - {fileID: 742365941954371315, guid: faa3472f63949b24f9d2ea73615a6812, type: 3}
+  - {fileID: 742365941954371315, guid: 5791e63bfd1a9c54982fd0d1699a9546, type: 3}
   - {fileID: 742365941954371315, guid: 5791e63bfd1a9c54982fd0d1699a9546, type: 3}
   outputs:
   - {fileID: 1962452473649490915, guid: 2a3a8ec25402e2544a7d099366652d38, type: 3}
