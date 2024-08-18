@@ -1,14 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication.ExtendedProtection;
 using UnityEngine;
-
-public class SheepScript : MonoBehaviour
-{   
-    public AudioClip sheepBah;
-    public AudioClip sheepFood;
-    public AudioClip sheepDead;
-    public class TemporaryLifeLoss {
+public class TemporaryLifeLoss {
         public float lifeLoss;
         public float lifeLossTime;
         public TemporaryLifeLoss(float lifeLoss, float lifeLossTime) {
@@ -16,6 +11,15 @@ public class SheepScript : MonoBehaviour
             this.lifeLossTime = lifeLossTime;
         }
     }
+public class SheepScript : MonoBehaviour
+{   
+    public AudioClip sheepBah;
+    public AudioClip sheepFood;
+    public AudioClip sheepDead;
+    [Range(1, 5)]
+    public float slopeFactor = 1;
+    [Range(0, 3)]
+    public float scaleSpeed = 0.4f;
     public float weight = 0;
     public float baseLife = 120;
     [HideInInspector]
@@ -50,10 +54,10 @@ public class SheepScript : MonoBehaviour
         }
     }
     void Update() {
-        var log = Mathf.Log(weight + 1);
-        log = 1 + log * log;
+
+        var scale = 1 + Mathf.Pow(scaleSpeed * weight, 1/slopeFactor);
         float size = body.localScale.x;
-        float delta = log - size;
+        float delta = scale - size;
         if(Mathf.Abs(delta) > Time.deltaTime) size += Mathf.Sign(delta) * Time.deltaTime;
         body.localScale = size * Vector3.one;
         if(isDead) return;

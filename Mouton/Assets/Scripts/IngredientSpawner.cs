@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IngredientSpawner : MonoBehaviour
 {
+    public float ingredientSpawnDelay = 3;
     public List<GameObject> ingredients;
     public float spawnRate;
     private float counter;

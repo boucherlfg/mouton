@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SheepAnimation : MonoBehaviour
 {
+    private bool dead;
     private OnSheepEat sheepEat;
     private OnGameEnded gameEnd;
     private Animator animator;
@@ -18,6 +19,9 @@ public class SheepAnimation : MonoBehaviour
         sheepEat.Subscribe(HandleSheepEat);
         gameEnd.Subscribe(HandleGameEnded);
     }
+    void Update() {
+        if(dead) animator.Play("Dead");
+    }
     void OnDestroy() {
         sheepEat.Unsubscribe(HandleSheepEat);
         gameEnd.Unsubscribe(HandleGameEnded);
@@ -25,7 +29,7 @@ public class SheepAnimation : MonoBehaviour
 
     private void HandleGameEnded()
     {
-        animator.Play("Dead");
+        dead = true;
     }
 
     private void HandleSheepEat(FoodScript script)

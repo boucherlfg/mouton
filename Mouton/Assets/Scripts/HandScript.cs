@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,40 +7,71 @@ public class HandScript : MonoBehaviour {
     public static bool Activated {get;set;} = true;
     public AudioClip pickupSound;
     public AudioClip throwSound;
-    public Collider2D closest;
+    public List<Collider2D> accessible;
+    private Collider2D _hovered;
+    public Collider2D Hovered {
+        get => _hovered;
+        set {
+            if(_hovered) SetHover(_hovered, false);
+            _hovered = value;
+            if(_hovered) SetHover(Hovered, true);
+        }
+    }
     private InputService _input;
     [HideInInspector]
     public Transform carried;
     public float maxHeight = 2;
     public float maxVelocity = 5;
+    public float pickupRange = 2;
     [SerializeField]
     private Transform hand;
     void Start() {
         _input = ServiceManager.Instance.Get<InputService>();
-        _input.PickedUp += OnPickedUp;
-        _input.LeftDown += HandleThrow;
+        _input.LeftDown += HandleClick;
     }
 
     void Update() {
-        var closest = Physics2D.OverlapCircleAll(transform.position, 0.5f)
-                           .Where(x => x.GetComponent<PickUpable>() && (!carried || x.transform != carried.transform))
-                           .OrderBy(x => Vector2.Distance(x.transform.position, transform.position)).FirstOrDefault();
-        if(this.closest && closest != this.closest) {
-             this.closest.transform.localScale = Vector3.one;
-             this.closest.GetComponentInChildren<OutlineScript>(true).gameObject.SetActive(false);
-        }
-        
-        if(this.closest == closest) return;
-        this.closest = closest;
-        if(!this.closest) return;
+        // -------------- ACCESSIBLE
+        this.accessible.RemoveAll(x => !x);
+        var accessible = Physics2D.OverlapCircleAll(transform.position, pickupRange)
+                           .Where(x => x.GetComponent<PickUpable>() && (!carried || x.transform != carried)).ToList();
 
-        this.closest.transform.localScale = Vector3.one * 1.1f;
-        this.closest.GetComponentInChildren<OutlineScript>(true).gameObject.SetActive(true);
+        // remove those who are too far
+        this.accessible.FindAll(a => !accessible.Contains(a)).ForEach(a => SetOutline(a, false));
+        this.accessible.RemoveAll(a => !accessible.Contains(a));
+        
+        // add those who are now close enough
+        var toAdd = accessible.FindAll(a => !this.accessible.Contains(a));
+        toAdd.ForEach(a => SetOutline(a, true));
+        this.accessible.AddRange(toAdd);
+
+        // -------------- HOVERED
+        if(!this.Hovered) Hovered = null;
+        
+        if(!this.accessible.Contains(this.Hovered)) {
+            this.Hovered = null;
+        }
+
+        var hovered = Physics2D.OverlapCircleAll(_input.WorldMouse, 0.4f)
+                            .Where(x => x.GetComponent<PickUpable>() && (!carried || x.transform != carried.transform))
+                            .OrderBy(x => Vector2.Distance(x.transform.position, transform.position)).FirstOrDefault();
+
+        if(!accessible.Contains(hovered)) hovered = null;
+        Hovered = hovered;
+    }
+
+    void SetHover(Collider2D obj, bool active) 
+    {
+        float size = active ? 1.1f : 1;
+        obj.transform.localScale = Vector3.one * size;
+    }
+
+    void SetOutline(Collider2D obj, bool active) {
+        obj.GetComponentInChildren<OutlineScript>(true).gameObject.SetActive(active);
     }
 
     void OnDestroy() {
-        _input.PickedUp -= OnPickedUp;
-        _input.LeftDown -= HandleThrow;
+        _input.LeftDown -= HandleClick;
     }
 
     void Pickup(Transform pickupable) {
@@ -62,12 +94,14 @@ public class HandScript : MonoBehaviour {
         if(carried.TryGetComponent(out Ingredient food)) food.Frozen = true;
     }
 
-    void HandleThrow() {
+    void HandleClick() {
         if(!Activated) return;
+        if(OnPickedUp()) return;
         if(!this.carried) return;
 
         var carried = this.carried;
         Pickup(null);
+
         carried.GetComponent<ItemInteractivity>().Activated = true;
         var mousePos = _input.WorldMouse;
         var delta =  mousePos - (Vector2)transform.position;
@@ -78,15 +112,19 @@ public class HandScript : MonoBehaviour {
         
     }
   
-    void OnPickedUp() {
-        if(!Activated) return;
-        
-        
+    bool OnPickedUp() {
+        var mousePos = _input.WorldMouse;
+        var closest = Physics2D.OverlapCircleAll(mousePos, 0.4f)
+                            .Where(x => x.GetComponent<PickUpable>() && (!carried || x.transform != carried.transform))
+                            .OrderBy(x => Vector2.Distance(x.transform.position, transform.position)).FirstOrDefault();
+
         if(!closest) {
-            Pickup(null);
-            return;
+            return false;
         }
 
+        if(!accessible.Contains(closest)) return false;
+
         Pickup(closest.transform);
+        return true;
     }
 }
