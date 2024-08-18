@@ -6,14 +6,19 @@ public class EndGameMenu : MonoBehaviour {
     public TMPro.TMP_Text finalScore;
     public TMPro.TMP_Text highScore;
 
+    public float killButtonPenality = 0;
     public void Start() {
         var sheep = FindObjectOfType<SheepScript>();
         var weight = 50 + sheep.weight;
-        var life = sheep.baseLife;
+        var baseLife = sheep.baseLife;
         var currentLife = sheep.currentLife;
 
-        var spoiledMeat = weight * (1 - currentLife / life);
-        var score = weight * currentLife / life;
+        var lifeRatio = currentLife / baseLife;
+        var isDead = lifeRatio < 0.0001f;
+        var extraMeat = weight * (isDead ? killButtonPenality : lifeRatio);
+
+        var score = weight + extraMeat;
+
         var highScore = PlayerPrefs.GetFloat("highScore", 0);
         bool newHighscore = score > highScore;
         if(newHighscore) {
@@ -22,7 +27,7 @@ public class EndGameMenu : MonoBehaviour {
         }
 
         this.totalWeight.text = "Sheep weight : " + Mathf.Round(weight) + " kg";
-        this.spoiledMeat.text = "Spoiled meat : " + Mathf.Round(spoiledMeat) + " kg";
+        this.spoiledMeat.text = "Kill button bonus : " + Mathf.Round(extraMeat) + " kg";
         this.finalScore.text = "Final score : " + Mathf.Round(score) + " kg" + (newHighscore ? " (New highscore!)" : "");
         this.highScore.text = "Highscore : " + Mathf.Round(highScore) + " kg";
     }
