@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WalkHold
+  m_Name: Climb
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0.604, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -37,11 +37,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1408256690, guid: 4d5a72b95ef13494bb87db2ad5c3e099, type: 3}
+      value: {fileID: -785233640, guid: 10809aa85a6d6264eaccd3cf115e1d78, type: 3}
     - time: 0.16666667
-      value: {fileID: 1533683279, guid: 4d5a72b95ef13494bb87db2ad5c3e099, type: 3}
+      value: {fileID: 1466095323, guid: 10809aa85a6d6264eaccd3cf115e1d78, type: 3}
     - time: 0.33333334
-      value: {fileID: -1408256690, guid: 4d5a72b95ef13494bb87db2ad5c3e099, type: 3}
+      value: {fileID: -785233640, guid: 10809aa85a6d6264eaccd3cf115e1d78, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -73,9 +73,9 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1408256690, guid: 4d5a72b95ef13494bb87db2ad5c3e099, type: 3}
-    - {fileID: 1533683279, guid: 4d5a72b95ef13494bb87db2ad5c3e099, type: 3}
-    - {fileID: -1408256690, guid: 4d5a72b95ef13494bb87db2ad5c3e099, type: 3}
+    - {fileID: -785233640, guid: 10809aa85a6d6264eaccd3cf115e1d78, type: 3}
+    - {fileID: 1466095323, guid: 10809aa85a6d6264eaccd3cf115e1d78, type: 3}
+    - {fileID: -785233640, guid: 10809aa85a6d6264eaccd3cf115e1d78, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -103,7 +103,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.604
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136

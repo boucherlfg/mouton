@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6778029602854099847}
   - component: {fileID: 4815417744691153700}
   - component: {fileID: 5614839948303453753}
+  - component: {fileID: 4713015113691462160}
   m_Layer: 9
   m_Name: Trampoline
   m_TagString: Ground
@@ -204,4 +205,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4a8af20cdf2b64da1b98a8a31b7d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 20
+  jumpHeight: 15
+--- !u!95 &4713015113691462160
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962452473649490915}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 261e9f1811bc144458569b15909d6cd0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
