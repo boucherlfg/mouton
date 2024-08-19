@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputService {
     private Controls controls;
@@ -8,6 +9,7 @@ public class InputService {
     public event Action PickedUp;
     public event Action LeftDown;
     public event Action Interacted;
+    public event Action RightClick;
     public InputService() {
         controls = new Controls();
         controls.Player.Enable();
@@ -16,6 +18,12 @@ public class InputService {
         controls.Player.Pickup.performed += HandlePickup;
         controls.Player.LeftClick.performed += HandleLeftDown;
         controls.Player.Interact.performed += HandleInteract;
+        controls.Player.RightClick.performed += HandleRightDown;
+    }
+
+    private void HandleRightDown(InputAction.CallbackContext context)
+    {
+        RightClick?.Invoke();
     }
 
     public void HandleInteract(UnityEngine.InputSystem.InputAction.CallbackContext callback) {

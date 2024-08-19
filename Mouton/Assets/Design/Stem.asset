@@ -16,6 +16,5 @@ MonoBehaviour:
   inputs:
   - {fileID: 742365941954371315, guid: ccc3f2e7f9127c84580f889d847acbaf, type: 3}
   - {fileID: 742365941954371315, guid: ccc3f2e7f9127c84580f889d847acbaf, type: 3}
-  - {fileID: 742365941954371315, guid: ccc3f2e7f9127c84580f889d847acbaf, type: 3}
   outputs:
   - {fileID: 6588101436552229053, guid: 1f06a03347e3d1c408561ae930939090, type: 3}

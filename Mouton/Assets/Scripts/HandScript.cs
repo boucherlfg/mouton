@@ -28,6 +28,16 @@ public class HandScript : MonoBehaviour {
     void Start() {
         _input = ServiceManager.Instance.Get<InputService>();
         _input.LeftDown += HandleClick;
+        _input.RightClick += DestroyPlatform;
+    }
+
+    private void DestroyPlatform()
+    {
+        var hovered = Physics2D.OverlapCircleAll(_input.WorldMouse, 0.4f)
+                            .Where(x => x.GetComponent<PlatformPickupable>() && (!carried || x.transform != carried.transform))
+                            .OrderBy(x => Vector2.Distance(x.transform.position, transform.position)).FirstOrDefault();
+        if(!hovered) return;
+        Destroy(hovered.gameObject);
     }
 
     void Update() {
