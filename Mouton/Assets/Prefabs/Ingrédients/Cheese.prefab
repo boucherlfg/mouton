@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d131933f2facec40878039922a6308b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodLifetime: 30
+  foodLifetime: 20
   type: 2
 --- !u!114 &2994056943667216363
 MonoBehaviour:

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public enum IngredientType {
@@ -30,6 +31,9 @@ public class Ingredient : MonoBehaviour {
     public bool Activated {get;set;}
     public IngredientType type;
     
+    void Start() {
+        StartCoroutine(Flicker());
+    }
     void Update() {
         var body = GetComponent<Rigidbody2D>();
         body.velocity = Vector2.ClampMagnitude(body.velocity, 8);
@@ -40,5 +44,26 @@ public class Ingredient : MonoBehaviour {
         }
         foodCounter += Time.deltaTime;
         if(foodCounter > foodLifetime) Destroy(gameObject);       
+    }
+
+    IEnumerator Flicker() {
+        var rend = GetComponent<SpriteRenderer>();
+                
+        while(true) {
+            if(foodCounter / foodLifetime > 0.75f) {
+                var color = rend.color;
+                color.a = 0.5f;
+                rend.color = color;
+                yield return new WaitForSeconds(0.25f);
+                color.a = 1f;
+                rend.color = color;
+                yield return new WaitForSeconds(0.25f);
+            }
+            else {
+                var color = rend.color;
+                color.a = 1;
+                rend.color = color;
+            }
+        }
     }
 }
