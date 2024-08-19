@@ -11,6 +11,13 @@ public class InputService {
     public event Action Interacted;
     public event Action RightClick;
     public event Action Paused;
+    public bool Activated {
+        get => controls.Player.enabled;
+        set {
+            if(value) controls.Player.Enable();
+            else controls.Player.Disable();
+        }
+    }
     public InputService() {
         controls = new Controls();
         controls.Player.Enable();

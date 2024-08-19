@@ -2,34 +2,33 @@ using System.Collections;
 using UnityEngine;
 
 public enum IngredientType {
-    Ble = 0,
-    Tomate = 1,
-    Fromage = 2,
-    Poulet = 3,
-    Laitue = 4,
-    Pain = 5,
-    Spag = 6,
-    CubeTomate = 7,
-    BolSalade = 8,
-    SaladeTomate = 9,
-    TrancheFromage = 10,
-    PouletPane = 11,
-    TranchePoulet = 12,
-    SpagBolognaise = 13,
-    SaladePoulet = 14,
-    CheeseBurger = 15,
-    SauceTomate = 16,
-    Laine = 17,
-    Tige = 18,
-    FromageRape = 19,
+    Wheat = 0,
+    Tomato = 1,
+    Cheese = 2,
+    Chicken = 3,
+    Lettuce = 4,
+    Bread = 5,
+    Spaghetti = 6,
+    TomatoSalad = 7,
+    CheeseSlice = 8,
+    FriedChicken = 9,
+    GrilledChicken = 10,
+    Bolognaise = 11,
+    ChickenSalad = 12,
+    CheeseBurger = 13,
+    TomatoSauce = 14,
+    Wool = 15,
+    Stem = 16,
+    GratedCheese = 17,
 }
 public class Ingredient : MonoBehaviour {
-    
+    public IngredientType type;
     public float foodLifetime = 30;
     public bool Frozen {get;set;}
     private float foodCounter = 0;
     public bool Activated {get;set;}
-    public IngredientType type;
+    public GameObject ice;
+    public bool frozenFromFreezer;
     
     void Start() {
         StartCoroutine(Flicker());
@@ -38,6 +37,8 @@ public class Ingredient : MonoBehaviour {
         var body = GetComponent<Rigidbody2D>();
         body.velocity = Vector2.ClampMagnitude(body.velocity, 8);
         
+        
+        ice.SetActive(frozenFromFreezer);
         if(Frozen) {
             foodCounter = 0;
             return;
