@@ -63,6 +63,7 @@ public class Ingredient : MonoBehaviour {
                 var color = rend.color;
                 color.a = 1;
                 rend.color = color;
+                yield return null;
             }
         }
     }

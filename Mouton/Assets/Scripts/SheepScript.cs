@@ -49,29 +49,30 @@ public class SheepScript : MonoBehaviour
         while(true) {
             var ranomTime = Random.Range(25, 100);
             yield return new WaitForSeconds(ranomTime);
-            if(currentLife < 0) break;
+            if(isDead) break;
             AudioSource.PlayClipAtPoint(sheepBah, transform.position);
         }
     }
     void Update() {
+
 
         var scale = 1 + Mathf.Pow(scaleSpeed * weight, 1/slopeFactor);
         float size = body.localScale.x;
         float delta = scale - size;
         if(Mathf.Abs(delta) > Time.deltaTime) size += Mathf.Sign(delta) * Time.deltaTime;
         body.localScale = size * Vector3.one;
-        if(isDead) return;
         
+        if(isDead) return;
+
         freeze -= Time.deltaTime;
         freeze = Mathf.Max(0, freeze);
         if(freeze > 0.01f)  return;
 
-        var lifeLoss = lifeLosses.Aggregate(baseLifeLoss, (current, i) => current + i.lifeLoss);
+        lifeLosses.ForEach(l => currentLife -= l.lifeLoss * Time.deltaTime);
         lifeLosses.ForEach(l => l.lifeLossTime -= Time.deltaTime);
         lifeLosses.RemoveAll(l => l.lifeLossTime <= 0);
 
-        currentLife -= lifeLoss * Time.deltaTime;
-        currentLife -= Time.deltaTime;
+        currentLife -= baseLifeLoss * Time.deltaTime;
 
         if(currentLife < 0) Die();
     }
