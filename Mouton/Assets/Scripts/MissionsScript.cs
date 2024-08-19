@@ -5,17 +5,21 @@ using UnityEngine;
 
 public class MissionsScript : MonoBehaviour
 {
+    [HideInInspector]
+    public int successfullMissions = 0;
+    private List<Mission> missions = new List<Mission>();
+    private float timer;
+    private int missionCount = 0;
+    private int currentTier = 0;
+    private Mission currentMission;
+
     public AudioClip missionAccomplie;
+    public AudioClip missionFailed;
     public AudioClip nouvelleMission;
     public float timeBetweenMissions = 10;
-    private float timer;
     public float tier0MissionCount = 10;
     public float tier1MissionCount = 20;
     
-    private List<Mission> missions = new List<Mission>();
-    private int missionCount = 0;
-    private int currentTier = 0;
-
     public GameObject[] tier0;
     public GameObject[] tier1;
     public GameObject[] tier2;
@@ -25,13 +29,16 @@ public class MissionsScript : MonoBehaviour
         public GameObject ingredient;
     }
 
-    private Mission currentMission;
     public SheepScript sheep;
     public GameObject sheepBubble;
+    public GameObject indicatorBubble;
     public SpriteRenderer ingredientImage;
+    public SpriteRenderer indicatorIngredientImage;
+    public Sprite hex;
     public Sprite heart;
 
-    public float bonusPercent = 0.25f;
+    public float bonusLifePercent = 0.25f;
+    public float bonusWeightPercent = 0.25f;
     
     void Start() {
         foreach(var tier in tier0) missions.Add(new Mission() {tier = 0, ingredient = tier});
@@ -59,26 +66,44 @@ public class MissionsScript : MonoBehaviour
         currentMission = availableMissions.GetRandom();
         
         sheepBubble.SetActive(true);
+        indicatorBubble.SetActive(true);
         ingredientImage.sprite = currentMission.ingredient.GetComponent<SpriteRenderer>().sprite;
+        indicatorIngredientImage.sprite = ingredientImage.sprite;
         AudioSource.PlayClipAtPoint(nouvelleMission, sheep.transform.position);
     }
     private void HandleEating(FoodScript food)
     {
         if(currentMission == null) return;
-        if(currentMission.ingredient.GetComponent<FoodScript>().type != food.type) return;
-
-        var lifeBonus = food.life * bonusPercent;
-        sheep.currentLife += lifeBonus;
-        StartCoroutine(MissionComplete());
+        if(currentMission.ingredient.GetComponent<FoodScript>().type != food.type) {
+            AudioSource.PlayClipAtPoint(missionFailed, sheep.transform.position, 1.5f);
+            sheep.GetComponentInChildren<Animator>().Play("MissionFailed");
+            ingredientImage.sprite = hex;
+            indicatorIngredientImage.sprite = hex;
+            var lifeBonus = food.life * bonusLifePercent;
+            var weightBonus = food.weight * bonusWeightPercent;
+            sheep.currentLife -= lifeBonus;
+            sheep.weight -= weightBonus;
+        }
+        else {
+            ingredientImage.sprite = heart;
+            indicatorIngredientImage.sprite = heart;
+            AudioSource.PlayClipAtPoint(missionAccomplie, sheep.transform.position, 1.5f);
+            sheep.GetComponentInChildren<Animator>().Play("MissionSuccess");
+            var lifeBonus = food.life * bonusLifePercent;
+            var weightBonus = food.weight * bonusWeightPercent;
+            sheep.currentLife += lifeBonus;
+            sheep.weight += weightBonus;
+            successfullMissions++;
+        }
+        StartCoroutine(EndMission());
     }
 
-    IEnumerator MissionComplete() {
-        ingredientImage.sprite = heart;
-        AudioSource.PlayClipAtPoint(missionAccomplie, sheep.transform.position, 1.5f);
+    IEnumerator EndMission() {
         yield return new WaitForSeconds(1);
 
         currentMission = null;
         sheepBubble.SetActive(false);
+        indicatorBubble.SetActive(false);
         timer = 0;
         missionCount++;
         if(currentTier == 0  && missionCount >= tier0MissionCount) {

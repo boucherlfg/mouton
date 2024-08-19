@@ -34,6 +34,6 @@ public class SheepAnimation : MonoBehaviour
 
     private void HandleSheepEat(FoodScript script)
     {
-        animator.Play("Eat");
+        // animator.Play("Eat");
     }
 }

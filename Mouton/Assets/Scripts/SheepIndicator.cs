@@ -15,6 +15,8 @@ public class SheepIndicator : MonoBehaviour
     public GameObject visuals;
     private MoveScript player;
     private SheepScript sheep;
+    public SpriteRenderer bubbleImage;
+    public GameObject bubbleObject;
     private Camera mainCam;
     // Start is called before the first frame update
     void Start()
@@ -44,7 +46,8 @@ public class SheepIndicator : MonoBehaviour
 
         label.text = Mathf.Round(distance) + " m";
         label.GetComponent<RectTransform>().localPosition = new Vector3(0, -Mathf.Sign(delta.y) * 1.4f, -2);
-
+        bubbleImage.flipX = delta.x > 0;
+        bubbleObject.transform.localPosition = new Vector3(1.85f * -Mathf.Sign(delta.x), 0, 0);
         arrow.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(direction.y, direction.x));
 
         Vector2 pos = mainCam.transform.position;
