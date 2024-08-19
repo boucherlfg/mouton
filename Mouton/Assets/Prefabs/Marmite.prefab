@@ -46,16 +46,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c984ff34b74eb2439096421a0281eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goodRecipe: {fileID: 0}
-  badRecipe: {fileID: 0}
-  placeItem: {fileID: 0}
+  goodRecipe: {fileID: 8300000, guid: d0e9dad6b51820f4a85bcf28f9b75dfe, type: 3}
+  badRecipe: {fileID: 8300000, guid: 95b0c38da9cc64f4ea97842a8bc2e8f6, type: 3}
+  placeItem: {fileID: 8300000, guid: cebe015e521c8fb4f94fa2eb84233e0c, type: 3}
+  done: {fileID: 8300000, guid: 51114ff88fd7a264490df7b00d6c582f, type: 3}
   recipes:
   - {fileID: 11400000, guid: 441f9516a01f43644a68294be76d288d, type: 2}
   - {fileID: 11400000, guid: cd8a584dcbfb7ad49b49e59737326c47, type: 2}
-  - {fileID: 11400000, guid: c81d1e5f95423b04494567b42f058001, type: 2}
-  - {fileID: 11400000, guid: 18d63c5bfbe985f48bce49895a53a50a, type: 2}
   - {fileID: 11400000, guid: 93ce801a2e5806e4f9af003b29bc8e77, type: 2}
   - {fileID: 11400000, guid: 11f39cf95541ded458e13a7ed3babee3, type: 2}
+  - {fileID: 11400000, guid: fdff501c2f6acba4ebf75a1ef8947496, type: 2}
+  - {fileID: 11400000, guid: 18d63c5bfbe985f48bce49895a53a50a, type: 2}
+  - {fileID: 11400000, guid: e58377a9598495d44911c28c4bd8dd05, type: 2}
   - {fileID: 11400000, guid: a4332ead87c85264da9128c299c683dc, type: 2}
   defaultRecipe: {fileID: 11400000, guid: baf41b6de0fe38845a03ad7b75697957, type: 2}
 --- !u!61 &5845759424749707043
@@ -175,8 +177,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1777388045
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -660386159, guid: 5453179fc93881b4daf96f26944370d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -278,6 +280,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -660386159, guid: 5453179fc93881b4daf96f26944370d1, type: 3}
+    - target: {fileID: 4131916344009545308, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131916344009545308, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131916344009545308, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1777388045
+      objectReference: {fileID: 0}
     - target: {fileID: 8559643272122008740, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
       propertyPath: m_Name
       value: Outline

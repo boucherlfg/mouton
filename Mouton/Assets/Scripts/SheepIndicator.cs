@@ -8,6 +8,8 @@ public class SheepIndicator : MonoBehaviour
     public float bottom;
     public float left;
     public float right;
+
+    public TMPro.TMP_Text label;
     public Transform tip;
     public Transform arrow;
     public GameObject visuals;
@@ -35,9 +37,13 @@ public class SheepIndicator : MonoBehaviour
         var rect = new Rect(min.x, min.y, max.x - min.x, max.y - min.y);
         
         visuals.SetActive(true);
+
         Vector2 delta = sheep.transform.position - player.transform.position;
         var direction = delta.normalized;
         var distance = delta.magnitude;
+
+        label.text = Mathf.Round(distance) + " m";
+        label.GetComponent<RectTransform>().localPosition = new Vector3(0, -Mathf.Sign(delta.y) * 1.4f, -2);
 
         arrow.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(direction.y, direction.x));
 

@@ -14,8 +14,7 @@ public class CraftingTable : MonoBehaviour
 
     private Animator animator;
     private List<Ingredient> ingredients = new();
-    [SerializeField]
-    private List<Recipe> recipes = new();
+    public List<Recipe> recipes = new();
     [SerializeField]
     private Recipe defaultRecipe;
     public bool Working {get; private set;}

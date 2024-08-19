@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1777388045
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -386254950, guid: 5453179fc93881b4daf96f26944370d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -191,8 +191,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1777388045
+  m_SortingLayer: 1
   m_SortingOrder: 4
   m_Sprite: {fileID: 917469611, guid: 5453179fc93881b4daf96f26944370d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -251,16 +251,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c984ff34b74eb2439096421a0281eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goodRecipe: {fileID: 0}
-  badRecipe: {fileID: 0}
-  placeItem: {fileID: 0}
+  goodRecipe: {fileID: 8300000, guid: caec858a42cf23d4ba3b07c8ad4470dd, type: 3}
+  badRecipe: {fileID: 8300000, guid: 95b0c38da9cc64f4ea97842a8bc2e8f6, type: 3}
+  placeItem: {fileID: 8300000, guid: cebe015e521c8fb4f94fa2eb84233e0c, type: 3}
+  done: {fileID: 8300000, guid: d55861b47f48c24428884dc6a83280b5, type: 3}
   recipes:
   - {fileID: 11400000, guid: 0544d0631f28fe3419117168a6a24621, type: 2}
-  - {fileID: 11400000, guid: de348d480a2fc7343b8df08d20c25e6d, type: 2}
-  - {fileID: 11400000, guid: bae7c16b93a05594b9ed18e0eea4a2a6, type: 2}
-  - {fileID: 11400000, guid: e130468d76da71a45a514f0e9ab2b36f, type: 2}
   - {fileID: 11400000, guid: 14ca57f863782e940805c382315bc3f0, type: 2}
-  - {fileID: 11400000, guid: e58377a9598495d44911c28c4bd8dd05, type: 2}
+  - {fileID: 11400000, guid: c81d1e5f95423b04494567b42f058001, type: 2}
+  - {fileID: 11400000, guid: e130468d76da71a45a514f0e9ab2b36f, type: 2}
   - {fileID: 11400000, guid: 89bcf57051d5d97438767547c7363bdc, type: 2}
   - {fileID: 11400000, guid: f39b11ff85b628c4aa0d30e41388e87d, type: 2}
   - {fileID: 11400000, guid: c985af12f428df044b2262a3a7334389, type: 2}
@@ -371,6 +370,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -386254950, guid: 5453179fc93881b4daf96f26944370d1, type: 3}
+    - target: {fileID: 4131916344009545308, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131916344009545308, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131916344009545308, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1777388045
+      objectReference: {fileID: 0}
     - target: {fileID: 8559643272122008740, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
       propertyPath: m_Name
       value: Outline

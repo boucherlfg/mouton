@@ -10,6 +10,7 @@ public class InputService {
     public event Action LeftDown;
     public event Action Interacted;
     public event Action RightClick;
+    public event Action Paused;
     public InputService() {
         controls = new Controls();
         controls.Player.Enable();
@@ -19,6 +20,12 @@ public class InputService {
         controls.Player.LeftClick.performed += HandleLeftDown;
         controls.Player.Interact.performed += HandleInteract;
         controls.Player.RightClick.performed += HandleRightDown;
+        controls.Player.Pause.performed += HandlePause;
+    }
+
+    private void HandlePause(InputAction.CallbackContext context)
+    {
+        Paused?.Invoke();
     }
 
     private void HandleRightDown(InputAction.CallbackContext context)
