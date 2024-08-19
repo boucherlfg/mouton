@@ -14,7 +14,6 @@ public class FootScript : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D other) {
         if(!other.CompareTag("Ground")) return;
-
         TouchedGround?.Invoke();
     }
     void OnCollisionEnter2D(Collision2D other) {

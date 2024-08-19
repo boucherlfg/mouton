@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MissionsScript : MonoBehaviour
 {
+    public AudioClip missionAccomplie;
+    public AudioClip nouvelleMission;
     public float timeBetweenMissions = 10;
     private float timer;
     public float tier0MissionCount = 10;
@@ -58,6 +60,7 @@ public class MissionsScript : MonoBehaviour
         
         sheepBubble.SetActive(true);
         ingredientImage.sprite = currentMission.ingredient.GetComponent<SpriteRenderer>().sprite;
+        AudioSource.PlayClipAtPoint(nouvelleMission, sheep.transform.position);
     }
     private void HandleEating(FoodScript food)
     {
@@ -71,6 +74,7 @@ public class MissionsScript : MonoBehaviour
 
     IEnumerator MissionComplete() {
         ingredientImage.sprite = heart;
+        AudioSource.PlayClipAtPoint(missionAccomplie, sheep.transform.position, 1.5f);
         yield return new WaitForSeconds(1);
 
         currentMission = null;

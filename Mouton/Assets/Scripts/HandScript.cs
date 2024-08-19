@@ -28,16 +28,17 @@ public class HandScript : MonoBehaviour {
     void Start() {
         _input = ServiceManager.Instance.Get<InputService>();
         _input.LeftDown += HandleClick;
-        _input.RightClick += DestroyPlatform;
+        _input.RightClick += TakeBackPlatform;
     }
 
-    private void DestroyPlatform()
+    private void TakeBackPlatform()
     {
         var hovered = Physics2D.OverlapCircleAll(_input.WorldMouse, 0.4f)
                             .Where(x => x.GetComponent<PlatformPickupable>() && (!carried || x.transform != carried.transform))
                             .OrderBy(x => Vector2.Distance(x.transform.position, transform.position)).FirstOrDefault();
         if(!hovered) return;
-        Destroy(hovered.gameObject);
+        var platform = hovered.GetComponent<PlatformPickupable>();
+        platform.Start();
     }
 
     void Update() {
@@ -54,7 +55,7 @@ public class HandScript : MonoBehaviour {
         var toAdd = accessible.FindAll(a => !this.accessible.Contains(a));
         toAdd.ForEach(a => SetOutline(a, true));
         this.accessible.AddRange(toAdd);
-
+        
         // -------------- HOVERED
         if(!this.Hovered) Hovered = null;
 
@@ -69,7 +70,6 @@ public class HandScript : MonoBehaviour {
         if(!accessible.Contains(hovered)) hovered = null;
         Hovered = hovered;
     }
-
     void SetHover(Collider2D obj, bool active) 
     {
         float size = active ? 1.1f : 1;
@@ -83,7 +83,13 @@ public class HandScript : MonoBehaviour {
     void OnDestroy() {
         _input.LeftDown -= HandleClick;
     }
-
+    public void Drop() {
+        if(!carried) return;
+        carried.transform.parent = null;
+        carried.GetComponent<Rigidbody2D>().simulated = true;
+        if(carried.TryGetComponent(out Ingredient food)) food.Frozen = false;
+        carried = null;
+    }
     void Pickup(Transform pickupable) {
         if(!Activated) return;
         if(carried) {

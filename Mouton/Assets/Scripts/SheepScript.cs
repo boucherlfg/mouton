@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Authentication.ExtendedProtection;
 using UnityEngine;
 public class TemporaryLifeLoss {
         public float lifeLoss;
@@ -13,7 +10,6 @@ public class TemporaryLifeLoss {
     }
 public class SheepScript : MonoBehaviour
 {   
-    public AudioClip sheepBah;
     public AudioClip sheepFood;
     public AudioClip sheepDead;
     [Range(1, 5)]
@@ -41,18 +37,8 @@ public class SheepScript : MonoBehaviour
 
     void Start() {
         currentLife = baseLife;
-        StartCoroutine(RandomBah());
     }
 
-    IEnumerator RandomBah() 
-    {
-        while(true) {
-            var ranomTime = Random.Range(25, 100);
-            yield return new WaitForSeconds(ranomTime);
-            if(isDead) break;
-            AudioSource.PlayClipAtPoint(sheepBah, transform.position);
-        }
-    }
     void Update() {
 
 

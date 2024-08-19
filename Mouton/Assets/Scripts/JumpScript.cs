@@ -7,7 +7,6 @@ public class JumpScript : MonoBehaviour
 {
     [SerializeField]
     private float jumpHeight = 10;
-
     public AudioClip jumpSound;
     public AudioClip landSound;
     private Rigidbody2D _rigidbody2D;
