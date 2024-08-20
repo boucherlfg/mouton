@@ -20,13 +20,14 @@ public class PlatformPickupable : MonoBehaviour
         _input.LeftDown += HandleLeftDown;
         FindObjectOfType<HandScript>().Drop();
     }
+
     void ActivateColliders(bool activated) {
         GetComponents<Collider2D>().ToList().ForEach(c => c.enabled = activated);
         GetComponentsInChildren<Collider2D>().ToList().ForEach(c => c.enabled = activated);
     }
     public void ActivateOutline(bool activated) {
         
-        GetComponentInChildren<OutlineScript>(true).gameObject.SetActive(true);
+        GetComponentInChildren<OutlineScript>(true).gameObject.SetActive(activated);
     }
     void HandleLeftDown() {
         placed = true;

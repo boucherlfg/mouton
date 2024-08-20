@@ -64,12 +64,13 @@ public class HandScript : MonoBehaviour {
         }
 
         var hovered = Physics2D.OverlapCircleAll(_input.WorldMouse, 0.4f)
-                            .Where(x => x.GetComponent<PickUpable>() && (!carried || x.transform != carried.transform))
+                            .Where(x => (x.GetComponent<PickUpable>() || x.GetComponent<PlatformPickupable>()) && (!carried || x.transform != carried.transform))
                             .OrderBy(x => Vector2.Distance(x.transform.position, transform.position)).FirstOrDefault();
-
-        if(!accessible.Contains(hovered)) hovered = null;
+        
+        if(hovered && !hovered.GetComponent<PlatformPickupable>() && !accessible.Contains(hovered)) hovered = null;
         Hovered = hovered;
     }
+
     void SetHover(Collider2D obj, bool active) 
     {
         float size = active ? 1.1f : 1;
@@ -83,6 +84,7 @@ public class HandScript : MonoBehaviour {
     void OnDestroy() {
         _input.LeftDown -= HandleClick;
     }
+
     public void Drop() {
         if(!carried) return;
         carried.transform.parent = null;
@@ -90,6 +92,7 @@ public class HandScript : MonoBehaviour {
         if(carried.TryGetComponent(out KillAfterTime food)) food.Frozen = !food.frozenFromFreezer;
         carried = null;
     }
+
     void Pickup(Transform pickupable) {
         if(!Activated) return;
         if(carried) {
@@ -113,8 +116,13 @@ public class HandScript : MonoBehaviour {
     void HandleClick() {
         if(!Activated) return;
         if(OnPickedUp()) return;
+        if(!this.carried && Hovered && Hovered.GetComponent<PlatformPickupable>()) {
+            TakeBackPlatform();
+            return;
+        }
         if(!this.carried) return;
 
+        // throw stuff
         var carried = this.carried;
         Pickup(null);
 
