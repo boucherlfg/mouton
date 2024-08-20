@@ -14,10 +14,12 @@ public class FootScript : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D other) {
         if(!other.CompareTag("Ground")) return;
+        if(LadderScript.ladderCount > 0) return;
         TouchedGround?.Invoke();
     }
     void OnCollisionEnter2D(Collision2D other) {
         if(!other.gameObject.CompareTag("Ground")) return;
+        if(LadderScript.ladderCount > 0) return;
         TouchedGround?.Invoke();
     }
 

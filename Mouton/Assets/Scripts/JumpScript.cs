@@ -7,6 +7,7 @@ public class JumpScript : MonoBehaviour
 {
     [SerializeField]
     private float jumpHeight = 10;
+    public float gravityScale = 3;
     public AudioClip jumpSound;
     public AudioClip landSound;
     private Rigidbody2D _rigidbody2D;
@@ -20,6 +21,7 @@ public class JumpScript : MonoBehaviour
         inputService = ServiceManager.Instance.Get<InputService>();
         inputService.Jumped += HandleJump;
         FootScript.TouchedGround += HandleTouchedGround;
+        _rigidbody2D.gravityScale = gravityScale;
     }
 
     void OnDestroy() {
