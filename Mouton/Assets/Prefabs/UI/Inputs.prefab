@@ -72,10 +72,10 @@ MonoBehaviour:
     Left click
 
 
-    E
+    E, Control or
+    Shift
 
-    Escape
-    or Enter'
+    Escape or Enter'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 49f8b4df01e4b9f47abfb6ad4022048e, type: 2}
   m_sharedMaterial: {fileID: 9013177841858590218, guid: 49f8b4df01e4b9f47abfb6ad4022048e, type: 2}
