@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformEffect : MonoBehaviour
 {
-    PlatformEffector2D platform;
+    public Collider2D platform;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,9 +12,9 @@ public class PlatformEffect : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //platform.
+    void Update() {
+        var move = ServiceManager.Instance.Get<InputService>().Move;
+        platform.enabled = move.y > -0.5f;
     }
     
 }

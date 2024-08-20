@@ -3,9 +3,10 @@ using UnityEngine;
 public class LadderScript : MonoBehaviour
 {
     public static int ladderCount;
-
+    public Collider2D platform;
     private float gravity = 0;
-
+    
+    
     void OnTriggerEnter2D(Collider2D other) {
         if(!other.GetComponent<MoveScript>()) return;
 

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4815417744691153700}
   - component: {fileID: 5614839948303453753}
   - component: {fileID: 4713015113691462160}
+  - component: {fileID: 2033153526082178332}
   m_Layer: 9
   m_Name: Spring
   m_TagString: Untagged
@@ -228,6 +229,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2033153526082178332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962452473649490915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40547b6664f18e44a844935c0fb2b87c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 7646686065811462190}
 --- !u!1001 &2700483408688547765
 PrefabInstance:
   m_ObjectHideFlags: 0

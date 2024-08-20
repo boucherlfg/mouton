@@ -174,6 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf2177cda238544a8c8b813df45e723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platform: {fileID: 0}
 --- !u!114 &4132602697434743324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +198,7 @@ GameObject:
   - component: {fileID: 4069905105894011341}
   - component: {fileID: 163645246998605894}
   - component: {fileID: 8779237745831941870}
-  - component: {fileID: 1654875233895018452}
+  - component: {fileID: 1183312989981150792}
   m_Layer: 9
   m_Name: Top
   m_TagString: Ground
@@ -284,7 +285,7 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &1654875233895018452
+--- !u!114 &1183312989981150792
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,9 +294,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8771505967496179421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d39eb0979f1bd4498896967f8ed61eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 40547b6664f18e44a844935c0fb2b87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platform: {fileID: 163645246998605894}
 --- !u!1001 &4301047579079379080
 PrefabInstance:
   m_ObjectHideFlags: 0
