@@ -28,17 +28,7 @@ public class HandScript : MonoBehaviour {
     void Start() {
         _input = ServiceManager.Instance.Get<InputService>();
         _input.LeftDown += HandleClick;
-        _input.RightClick += TakeBackPlatform;
-    }
-
-    private void TakeBackPlatform()
-    {
-        var hovered = Physics2D.OverlapCircleAll(_input.WorldMouse, 0.4f)
-                            .Where(x => x.GetComponent<PlatformPickupable>() && (!carried || x.transform != carried.transform))
-                            .OrderBy(x => Vector2.Distance(x.transform.position, transform.position)).FirstOrDefault();
-        if(!hovered) return;
-        var platform = hovered.GetComponent<PlatformPickupable>();
-        platform.Start();
+        //_input.RightClick += TakeBackPlatform;
     }
 
     void Update() {
@@ -71,6 +61,21 @@ public class HandScript : MonoBehaviour {
         Hovered = hovered;
     }
 
+
+    void OnDestroy() {
+        _input.LeftDown -= HandleClick;
+    }
+
+    private void TakeBackPlatform()
+    {
+        var hovered = Physics2D.OverlapCircleAll(_input.WorldMouse, 0.4f)
+                            .Where(x => x.GetComponent<PlatformPickupable>() && (!carried || x.transform != carried.transform))
+                            .OrderBy(x => Vector2.Distance(x.transform.position, transform.position)).FirstOrDefault();
+        if(!hovered) return;
+        var platform = hovered.GetComponent<PlatformPickupable>();
+        platform.Start();
+    }
+
     void SetHover(Collider2D obj, bool active) 
     {
         float size = active ? 1.1f : 1;
@@ -79,10 +84,6 @@ public class HandScript : MonoBehaviour {
 
     void SetOutline(Collider2D obj, bool active) {
         obj.GetComponentInChildren<OutlineScript>(true).gameObject.SetActive(active);
-    }
-
-    void OnDestroy() {
-        _input.LeftDown -= HandleClick;
     }
 
     public void Drop() {
@@ -94,6 +95,9 @@ public class HandScript : MonoBehaviour {
     }
 
     void Pickup(Transform pickupable) {
+        
+        if(pickupable && pickupable.GetComponent<PlatformPickupable>()) return;
+
         if(!Activated) return;
         if(carried) {
             carried.GetComponent<Rigidbody2D>().simulated = true;
@@ -142,7 +146,7 @@ public class HandScript : MonoBehaviour {
         var closest = Physics2D.OverlapCircleAll(mousePos, 0.4f)
                             .Where(x => x.GetComponent<PickUpable>() && (!carried || x.transform != carried.transform))
                             .OrderBy(x => Vector2.Distance(x.transform.position, transform.position)).FirstOrDefault();
-
+        
         if(!closest) {
             return false;
         }
