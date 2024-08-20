@@ -10,10 +10,12 @@ public class PauseMenu : MonoBehaviour
 
     void Start() {
         ServiceManager.Instance.Get<InputService>().Paused += OnPause;
+        ServiceManager.Instance.Get<InputService>().Resumed += Resume;
     }
     void OnDestroy() {
         
         ServiceManager.Instance.Get<InputService>().Paused -= OnPause;
+        ServiceManager.Instance.Get<InputService>().Resumed -= Resume;
     }
 
     public void OnPause() {
@@ -22,13 +24,17 @@ public class PauseMenu : MonoBehaviour
         ServiceManager.Instance.Get<InputService>().Activated = false;
     }
     public void Resume() {
+        howToMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        
         Time.timeScale = 1;
         ServiceManager.Instance.Get<InputService>().Activated = true;
     }
 
     public void Restart() {
         SceneManager.LoadScene(gameObject.scene.name);
+        Time.timeScale = 1;
+        ServiceManager.Instance.Get<InputService>().Activated = true;
     }
 
     public void Howto() {

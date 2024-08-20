@@ -87,7 +87,7 @@ public class HandScript : MonoBehaviour {
         if(!carried) return;
         carried.transform.parent = null;
         carried.GetComponent<Rigidbody2D>().simulated = true;
-        if(carried.TryGetComponent(out Ingredient food)) food.Frozen = false;
+        if(carried.TryGetComponent(out KillAfterTime food)) food.Frozen = !food.frozenFromFreezer;
         carried = null;
     }
     void Pickup(Transform pickupable) {
@@ -95,7 +95,7 @@ public class HandScript : MonoBehaviour {
         if(carried) {
             carried.GetComponent<Rigidbody2D>().simulated = true;
             
-            if(carried.TryGetComponent(out Ingredient food2)) food2.Frozen = true;
+            if(carried.TryGetComponent(out KillAfterTime food2)) food2.Frozen = true;
             carried.transform.parent = null;
             carried = null;
         }
@@ -107,7 +107,7 @@ public class HandScript : MonoBehaviour {
         carried.transform.parent = hand;
         carried.transform.localPosition = Vector2.zero;
         carried.GetComponent<Rigidbody2D>().simulated = false;
-        if(carried.TryGetComponent(out Ingredient food)) food.Frozen = true;
+        if(carried.TryGetComponent(out KillAfterTime food)) food.Frozen = true;
     }
 
     void HandleClick() {

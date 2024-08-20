@@ -23,49 +23,13 @@ public enum IngredientType {
 }
 public class Ingredient : MonoBehaviour {
     public IngredientType type;
-    public float foodLifetime = 30;
-    public bool Frozen {get;set;}
-    private float foodCounter = 0;
     public bool Activated {get;set;}
-    public GameObject ice;
-    public bool frozenFromFreezer;
     
     void Start() {
-        StartCoroutine(Flicker());
     }
     void Update() {
         var body = GetComponent<Rigidbody2D>();
-        body.velocity = Vector2.ClampMagnitude(body.velocity, 8);
-        
-        
-        ice.SetActive(frozenFromFreezer);
-        if(Frozen) {
-            foodCounter = 0;
-            return;
-        }
-        foodCounter += Time.deltaTime;
-        if(foodCounter > foodLifetime) Destroy(gameObject);       
+        body.velocity = Vector2.ClampMagnitude(body.velocity, 8);   
     }
 
-    IEnumerator Flicker() {
-        var rend = GetComponent<SpriteRenderer>();
-                
-        while(true) {
-            if(foodCounter / foodLifetime > 0.75f) {
-                var color = rend.color;
-                color.a = 0.5f;
-                rend.color = color;
-                yield return new WaitForSeconds(0.25f);
-                color.a = 1f;
-                rend.color = color;
-                yield return new WaitForSeconds(0.25f);
-            }
-            else {
-                var color = rend.color;
-                color.a = 1;
-                rend.color = color;
-                yield return null;
-            }
-        }
-    }
 }

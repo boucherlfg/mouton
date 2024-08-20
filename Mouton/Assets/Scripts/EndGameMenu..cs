@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class EndGameMenu : MonoBehaviour {
     public TMPro.TMP_Text totalWeight;
-    public TMPro.TMP_Text spoiledMeat;
+    public TMPro.TMP_Text extraMeat;
     public TMPro.TMP_Text finalScore;
     public TMPro.TMP_Text highScore;
 
     public float killButtonPenality = 0;
+
     public void Start() {
         var sheep = FindObjectOfType<SheepScript>();
         var weight = 50 + sheep.weight;
@@ -27,7 +28,7 @@ public class EndGameMenu : MonoBehaviour {
         }
 
         this.totalWeight.text = "Sheep weight : " + Mathf.Round(weight) + " kg";
-        this.spoiledMeat.text = "Kill button bonus : " + Mathf.Round(extraMeat) + " kg";
+        this.extraMeat.text = "Kill button bonus : " + Mathf.Round(extraMeat) + " kg";
         this.finalScore.text = "Final score : " + Mathf.Round(score) + " kg" + (newHighscore ? " (New highscore!)" : "");
         this.highScore.text = "Highscore : " + Mathf.Round(highScore) + " kg";
     }

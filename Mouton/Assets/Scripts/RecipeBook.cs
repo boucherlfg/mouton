@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class RecipeBook : MonoBehaviour
 {
     public CraftingTable table;
+    public CraftingTable range;
     public CraftingTable chauldron;
+    
     public GameObject recipePrefab;
     public Transform container;
     public GameObject header;
@@ -19,6 +21,14 @@ public class RecipeBook : MonoBehaviour
         instance.GetComponentInChildren<TMPro.TMP_Text>().text = "Table";
 
         foreach(var recipe in table.recipes) {
+            instance = Instantiate(recipePrefab, container);
+            instance.GetComponent<RecipeMenuItem>().UpdateRecipe(recipe);
+        }
+
+        instance = Instantiate(header, container);
+        instance.GetComponentInChildren<Image>().sprite = range.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+        instance.GetComponentInChildren<TMPro.TMP_Text>().text = "Range";
+        foreach(var recipe in range.recipes) {
             instance = Instantiate(recipePrefab, container);
             instance.GetComponent<RecipeMenuItem>().UpdateRecipe(recipe);
         }

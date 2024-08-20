@@ -101,7 +101,7 @@ public class CraftingTable : MonoBehaviour
     }
 
     void Add(Ingredient ingredient) {
-        ingredient.GetComponent<Ingredient>().Frozen = true;
+        ingredient.GetComponent<KillAfterTime>().Frozen = true;
         ingredient.GetComponent<Rigidbody2D>().gravityScale = 0;
         ingredients.Add(ingredient);
     }
@@ -109,7 +109,7 @@ public class CraftingTable : MonoBehaviour
     void Drop(Ingredient ingredient) {
         ingredient.GetComponent<Rigidbody2D>().gravityScale = 1;
         ingredient.GetComponent<ItemInteractivity>().Activated = false;
-        ingredient.GetComponent<Ingredient>().Frozen = false;
+        ingredient.GetComponent<KillAfterTime>().Frozen = false;
     }
 
     void OnTriggerEnter2D(Collider2D other) {

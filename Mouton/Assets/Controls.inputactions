@@ -213,6 +213,17 @@
                 },
                 {
                     "name": "",
+                    "id": "1ba87cbc-6554-40b6-8377-94e42e3dff09",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fa67f6d6-8549-4fec-9bc9-346be2780d55",
                     "path": "<Keyboard>/s",
                     "interactions": "",
@@ -257,6 +268,28 @@
                 },
                 {
                     "name": "",
+                    "id": "5deebc78-a2f0-45f6-922e-94506b9e1607",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1084b6c7-7203-484b-8435-c5ac258de859",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "19443e51-ccba-48c5-98e4-7f898e3520c7",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -285,6 +318,45 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Pause",
+            "id": "2c57720c-fa67-4174-b7f9-33e782bf5560",
+            "actions": [
+                {
+                    "name": "Resume",
+                    "type": "Button",
+                    "id": "a0670d69-a57a-44a4-b5c4-c6962bf28fca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cb362d90-19fa-4715-845a-08b1be29f151",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Resume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea39ca21-fa0b-4ff9-bfd9-c24fab2179ce",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Resume",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

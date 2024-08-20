@@ -11,11 +11,18 @@ public class InputService {
     public event Action Interacted;
     public event Action RightClick;
     public event Action Paused;
+    public event Action Resumed;
     public bool Activated {
         get => controls.Player.enabled;
         set {
-            if(value) controls.Player.Enable();
-            else controls.Player.Disable();
+            if(value) {
+                controls.Player.Enable();
+                controls.Pause.Disable();
+            }
+            else {
+                controls.Player.Disable();
+                controls.Pause.Enable();
+            }
         }
     }
     public InputService() {
@@ -28,6 +35,12 @@ public class InputService {
         controls.Player.Interact.performed += HandleInteract;
         controls.Player.RightClick.performed += HandleRightDown;
         controls.Player.Pause.performed += HandlePause;
+        controls.Pause.Resume.performed += HandleResume;
+    }
+
+    private void HandleResume(InputAction.CallbackContext context)
+    {
+        Resumed?.Invoke();
     }
 
     private void HandlePause(InputAction.CallbackContext context)

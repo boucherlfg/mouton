@@ -325,10 +325,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupSound: {fileID: 8300000, guid: 48206c4503f1c8d4c9cdfade8cf12588, type: 3}
   throwSound: {fileID: 8300000, guid: faea92bbe1a555b45b08b24570a0059f, type: 3}
-  closest: {fileID: 0}
+  accessible: []
   carried: {fileID: 0}
   maxHeight: 2
   maxVelocity: 10
+  pickupRange: 2
   hand: {fileID: 2411687146126651734}
 --- !u!114 &2182068931015508653
 MonoBehaviour:
@@ -356,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d213b32751a6f46a8a9090ada3de53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 10
+  jumpHeight: 12
   jumpSound: {fileID: 8300000, guid: a7bb54387dec00f4cb4732752816efda, type: 3}
   landSound: {fileID: 8300000, guid: 3a299dcc642e5fc4492fa2a0de952c72, type: 3}
   isJumping: 0
@@ -376,7 +377,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2.5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 329f798edd6fc9b4bb688a558542d867, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
