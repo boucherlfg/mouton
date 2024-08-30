@@ -14,7 +14,7 @@ public class PlatformPickupable : MonoBehaviour
         placed = false;
         ActivateOutline(true);
         _input = ServiceManager.Instance.Get<InputService>();
-        HandScript.Activated = false;
+        ServiceManager.Instance.Get<OnPlatformPlacement>().Invoke(true);
 
         ActivateColliders(false);
         _input.LeftDown += HandleLeftDown;
@@ -31,7 +31,7 @@ public class PlatformPickupable : MonoBehaviour
     }
     void HandleLeftDown() {
         placed = true;
-        HandScript.Activated = true;
+        ServiceManager.Instance.Get<OnPlatformPlacement>().Invoke(false);
         ActivateColliders(true);
         _input.LeftDown -= HandleLeftDown;
         ActivateOutline(false);

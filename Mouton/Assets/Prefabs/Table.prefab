@@ -251,20 +251,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c984ff34b74eb2439096421a0281eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodPrefab: {fileID: 6588101436552229053, guid: 8aa8cd09360416b4a9176d3844709e55, type: 3}
+  ingredientPrefab: {fileID: 6588101436552229053, guid: 5791e63bfd1a9c54982fd0d1699a9546, type: 3}
   goodRecipe: {fileID: 8300000, guid: caec858a42cf23d4ba3b07c8ad4470dd, type: 3}
   badRecipe: {fileID: 8300000, guid: 95b0c38da9cc64f4ea97842a8bc2e8f6, type: 3}
   placeItem: {fileID: 8300000, guid: cebe015e521c8fb4f94fa2eb84233e0c, type: 3}
   done: {fileID: 8300000, guid: d55861b47f48c24428884dc6a83280b5, type: 3}
   recipes:
-  - {fileID: 11400000, guid: 0544d0631f28fe3419117168a6a24621, type: 2}
+  - {fileID: 11400000, guid: 93ce801a2e5806e4f9af003b29bc8e77, type: 2}
+  - {fileID: 11400000, guid: 441f9516a01f43644a68294be76d288d, type: 2}
   - {fileID: 11400000, guid: 14ca57f863782e940805c382315bc3f0, type: 2}
-  - {fileID: 11400000, guid: c81d1e5f95423b04494567b42f058001, type: 2}
   - {fileID: 11400000, guid: e130468d76da71a45a514f0e9ab2b36f, type: 2}
   - {fileID: 11400000, guid: 89bcf57051d5d97438767547c7363bdc, type: 2}
-  - {fileID: 11400000, guid: f39b11ff85b628c4aa0d30e41388e87d, type: 2}
-  - {fileID: 11400000, guid: c985af12f428df044b2262a3a7334389, type: 2}
-  - {fileID: 11400000, guid: f8798c8f38cc84f428a6427b350afeca, type: 2}
-  defaultRecipe: {fileID: 11400000, guid: baf41b6de0fe38845a03ad7b75697957, type: 2}
 --- !u!61 &7736688195088842675
 BoxCollider2D:
   m_ObjectHideFlags: 0

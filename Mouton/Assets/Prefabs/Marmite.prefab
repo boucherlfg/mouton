@@ -1,5 +1,89 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &48574444034502958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4633265960318913145}
+  - component: {fileID: 2769402705722310452}
+  m_Layer: 0
+  m_Name: logo_sprite2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4633265960318913145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48574444034502958}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.49, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6253855170834607771}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2769402705722310452
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48574444034502958}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 697638747
+  m_SortingLayer: -2
+  m_SortingOrder: 31
+  m_Sprite: {fileID: 21300000, guid: c5f0031fe41e24f4f944ba9e533f2bd9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.5625, y: 2.40625}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &360066985659375787
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,20 +130,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c984ff34b74eb2439096421a0281eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodPrefab: {fileID: 6588101436552229053, guid: 8aa8cd09360416b4a9176d3844709e55, type: 3}
+  ingredientPrefab: {fileID: 6588101436552229053, guid: 5791e63bfd1a9c54982fd0d1699a9546, type: 3}
   goodRecipe: {fileID: 8300000, guid: d0e9dad6b51820f4a85bcf28f9b75dfe, type: 3}
   badRecipe: {fileID: 8300000, guid: 95b0c38da9cc64f4ea97842a8bc2e8f6, type: 3}
   placeItem: {fileID: 8300000, guid: cebe015e521c8fb4f94fa2eb84233e0c, type: 3}
   done: {fileID: 8300000, guid: 51114ff88fd7a264490df7b00d6c582f, type: 3}
   recipes:
-  - {fileID: 11400000, guid: 441f9516a01f43644a68294be76d288d, type: 2}
-  - {fileID: 11400000, guid: cd8a584dcbfb7ad49b49e59737326c47, type: 2}
-  - {fileID: 11400000, guid: 93ce801a2e5806e4f9af003b29bc8e77, type: 2}
+  - {fileID: 11400000, guid: ccab9c30e0378794885f298eedc77590, type: 2}
+  - {fileID: 11400000, guid: 7092e14af55994542bb8454c44eb6c76, type: 2}
+  - {fileID: 11400000, guid: 8e104f3edfbfaec4a89a54afa5cb2be9, type: 2}
+  - {fileID: 11400000, guid: afadee8fb1872eb4a894c6516eaef868, type: 2}
+  - {fileID: 11400000, guid: 51065684157da8f43891fc8e1a915f8d, type: 2}
   - {fileID: 11400000, guid: 11f39cf95541ded458e13a7ed3babee3, type: 2}
   - {fileID: 11400000, guid: fdff501c2f6acba4ebf75a1ef8947496, type: 2}
-  - {fileID: 11400000, guid: 18d63c5bfbe985f48bce49895a53a50a, type: 2}
-  - {fileID: 11400000, guid: e58377a9598495d44911c28c4bd8dd05, type: 2}
   - {fileID: 11400000, guid: a4332ead87c85264da9128c299c683dc, type: 2}
-  defaultRecipe: {fileID: 11400000, guid: baf41b6de0fe38845a03ad7b75697957, type: 2}
+  - {fileID: 11400000, guid: c985af12f428df044b2262a3a7334389, type: 2}
+  - {fileID: 11400000, guid: f8798c8f38cc84f428a6427b350afeca, type: 2}
 --- !u!61 &5845759424749707043
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -306,7 +393,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3505711208454408094, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4633265960318913145}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f7909b4a929fc440871e6d99fe7fe28, type: 3}
 --- !u!4 &6253855170834607771 stripped

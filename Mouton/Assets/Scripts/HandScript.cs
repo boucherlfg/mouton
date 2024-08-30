@@ -3,8 +3,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class OnPlatformPlacement : BaseEvent<bool>{}
 public class HandScript : MonoBehaviour {
-    public static bool Activated {get;set;} = true;
+    private bool Activated {get;set;} = true;
     public AudioClip pickupSound;
     public AudioClip throwSound;
     public List<Collider2D> accessible;
@@ -28,9 +29,13 @@ public class HandScript : MonoBehaviour {
     void Start() {
         _input = ServiceManager.Instance.Get<InputService>();
         _input.LeftDown += HandleClick;
+        ServiceManager.Instance.Get<OnPlatformPlacement>().Subscribe(HandlePlatformPlacement);
         //_input.RightClick += TakeBackPlatform;
     }
 
+    void HandlePlatformPlacement(bool isPlacing) {
+        Activated = !isPlacing;
+    }
     void Update() {
         // -------------- ACCESSIBLE
         this.accessible.RemoveAll(x => !x);
@@ -64,6 +69,7 @@ public class HandScript : MonoBehaviour {
 
     void OnDestroy() {
         _input.LeftDown -= HandleClick;
+        ServiceManager.Instance.Get<OnPlatformPlacement>().Subscribe(HandlePlatformPlacement);
     }
 
     private void TakeBackPlatform()

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class IngredientSpawner : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject ingredientPrefab;
+    [SerializeField]
+    private GameObject foodPrefab;
+
     public float ingredientSpawnDelay = 3;
-    public List<GameObject> ingredients;
+    public List<Ingredient> ingredients;
     public float spawnRate;
     private float counter;
 
@@ -23,7 +28,8 @@ public class IngredientSpawner : MonoBehaviour
         var item = ingredients.GetRandom();
         var position = new Vector2(Random.Range(transform.position.x, transform.position.x + transform.localScale.x), 
                                    Random.Range(transform.position.y, transform.position.y + transform.localScale.y));
-        Instantiate(item, position, Quaternion.identity);
+        var instance = Instantiate(item is Food ? foodPrefab : ingredientPrefab, position, Quaternion.identity);
+        instance.GetComponent<IngredientScript>().ingredient = item;
     }
 
     void OnDrawGizmosSelected() {

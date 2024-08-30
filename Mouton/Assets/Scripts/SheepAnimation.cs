@@ -32,7 +32,7 @@ public class SheepAnimation : MonoBehaviour
         dead = true;
     }
 
-    private void HandleSheepEat(FoodScript script)
+    private void HandleSheepEat(Food script)
     {
         // animator.Play("Eat");
     }

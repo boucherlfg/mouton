@@ -7,30 +7,35 @@ using UnityEngine;
 
 public class CraftingTable : MonoBehaviour
 {
+    public GameObject foodPrefab;
+    public GameObject ingredientPrefab;
     public AudioClip goodRecipe;
     public AudioClip badRecipe;
     public AudioClip placeItem;
     public AudioClip done;
 
     private Animator animator;
-    private List<Ingredient> ingredients = new();
+    private List<IngredientScript> ingredients = new();
     public List<Recipe> recipes = new();
+#if GIBELOTTE
     [SerializeField]
     private Recipe defaultRecipe;
+#endif
     public bool Working {get; private set;}
     private HandScript hand;
-    public void Interact() {
+    public void Interact() 
+    {
         if(Working) return;
         var choice = recipes.Find(CanDoRecipe);
         if(choice) {
             StartCoroutine(Craft(choice));
             return;
         }
-        #if GIBELOTTE
+#if GIBELOTTE
         else if(ingredients.Count > 1) {
             Craft(defaultRecipe);
         }
-        #endif
+#endif
         else {
             AudioSource.PlayClipAtPoint(badRecipe, transform.position);
             DontCraft();
@@ -56,18 +61,25 @@ public class CraftingTable : MonoBehaviour
         AudioSource.PlayClipAtPoint(done, transform.position);
 
         Working = false;
-        foreach(var output in recipe.outputs) {
-            var result = Instantiate(output, transform.position, Quaternion.identity);
-            result.GetComponent<Rigidbody2D>().velocity = Vector2.up * 3 + Random.insideUnitCircle;
+        
+        GameObject result;
+        if(recipe.output is Platform platform) {
+            result = Instantiate(platform.prefab, transform.position, Quaternion.identity);
         }
+        else {
+            var prefab = recipe.output is Food ? foodPrefab : ingredientPrefab;
+            result = Instantiate(prefab, transform.position, Quaternion.identity);
+            result.GetComponent<IngredientScript>().ingredient = recipe.output;
+        }
+        result.GetComponent<Rigidbody2D>().velocity = Vector2.up * 3 + Random.insideUnitCircle;
     }
 
     bool CanDoRecipe(Recipe recipe) {
-        var recipeDict = new Dictionary<IngredientType, int>();
-        recipe.inputs.ToList().ForEach(x => recipeDict[x.type] = recipeDict.ContainsKey(x.type) ? recipeDict[x.type] + 1 : 1);
+        var recipeDict = new Dictionary<Ingredient, int>();
+        recipe.inputs.ToList().ForEach(x => recipeDict[x] = recipeDict.ContainsKey(x) ? recipeDict[x] + 1 : 1);
 
-        var ingredientsDict = new Dictionary<IngredientType, int>();
-        ingredients.ToList().ForEach(x => ingredientsDict[x.type] = ingredientsDict.ContainsKey(x.type) ? ingredientsDict[x.type] + 1 : 1);
+        var ingredientsDict = new Dictionary<Ingredient, int>();
+        ingredients.ToList().ForEach(x => ingredientsDict[x.ingredient] = ingredientsDict.ContainsKey(x.ingredient) ? ingredientsDict[x.ingredient] + 1 : 1);
 
         foreach(var key in recipeDict.Keys) {
             if(!ingredientsDict.ContainsKey(key) || ingredientsDict[key] != recipeDict[key]) return false;
@@ -82,7 +94,7 @@ public class CraftingTable : MonoBehaviour
 
     void Update() {
         hand = hand ? hand : FindObjectOfType<HandScript>();
-        if(hand.carried && hand.carried.TryGetComponent(out Ingredient ingredient)) {
+        if(hand.carried && hand.carried.TryGetComponent(out IngredientScript ingredient)) {
             var choice = ingredients.Find(x => x == ingredient);
             if(choice) { Drop(ingredient); ingredients.Remove(ingredient); }
         }
@@ -100,13 +112,13 @@ public class CraftingTable : MonoBehaviour
         }
     }
 
-    void Add(Ingredient ingredient) {
+    void Add(IngredientScript ingredient) {
         ingredient.GetComponent<KillAfterTime>().Frozen = true;
         ingredient.GetComponent<Rigidbody2D>().gravityScale = 0;
         ingredients.Add(ingredient);
     }
 
-    void Drop(Ingredient ingredient) {
+    void Drop(IngredientScript ingredient) {
         ingredient.GetComponent<Rigidbody2D>().gravityScale = 1;
         ingredient.GetComponent<ItemInteractivity>().Activated = false;
         ingredient.GetComponent<KillAfterTime>().Frozen = false;
@@ -115,7 +127,7 @@ public class CraftingTable : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(Working) return;
         if(ingredients.Count >= 3) return;
-        if(!other.TryGetComponent(out Ingredient ingredient)) return;
+        if(!other.TryGetComponent(out IngredientScript ingredient)) return;
         if(!ingredient.Activated) return;
         if(ingredients.Contains(ingredient)) return;
 

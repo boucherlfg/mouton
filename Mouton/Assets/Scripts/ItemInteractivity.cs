@@ -12,6 +12,6 @@ public class ItemInteractivity : MonoBehaviour
     void Update()
     {
         if(TryGetComponent(out FoodScript food)) food.Activated = Activated;
-        if(TryGetComponent(out Ingredient ingredient)) ingredient.Activated = Activated;
+        if(TryGetComponent(out IngredientScript ingredient)) ingredient.Activated = Activated;
     }
 }

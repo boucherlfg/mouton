@@ -69,13 +69,17 @@ public class SheepScript : MonoBehaviour
         ServiceManager.Instance.Get<OnGameEnded>().Invoke();
     }
    
-   void Eat(FoodScript food) {
+   void Eat(FoodScript foodScript) {
+        var ingredient = foodScript.GetComponent<IngredientScript>().ingredient;
+        if(ingredient is not Food) return;
+        
+        var food = ingredient as Food;
         AudioSource.PlayClipAtPoint(sheepFood, transform.position);
         freeze += food.freeze;
         currentLife += food.life;
         weight += food.weight;
         lifeLosses.Add(new TemporaryLifeLoss(food.lifeLoss, food.lifeLossTime));
         ServiceManager.Instance.Get<OnSheepEat>().Invoke(food);
-        Destroy(food.gameObject);
+        Destroy(foodScript.gameObject);
     }
 }

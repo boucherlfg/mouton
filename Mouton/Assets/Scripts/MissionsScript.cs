@@ -20,13 +20,13 @@ public class MissionsScript : MonoBehaviour
     public float tier0MissionCount = 10;
     public float tier1MissionCount = 20;
     
-    public GameObject[] tier0;
-    public GameObject[] tier1;
-    public GameObject[] tier2;
+    public Ingredient[] tier0;
+    public Ingredient[] tier1;
+    public Ingredient[] tier2;
     
     public class Mission {
         public int tier;
-        public GameObject ingredient;
+        public Ingredient ingredient;
     }
 
     public SheepScript sheep;
@@ -67,14 +67,14 @@ public class MissionsScript : MonoBehaviour
         
         sheepBubble.SetActive(true);
         indicatorBubble.SetActive(true);
-        ingredientImage.sprite = currentMission.ingredient.GetComponent<SpriteRenderer>().sprite;
+        ingredientImage.sprite = currentMission.ingredient.sprite;
         indicatorIngredientImage.sprite = ingredientImage.sprite;
         AudioSource.PlayClipAtPoint(nouvelleMission, sheep.transform.position);
     }
-    private void HandleEating(FoodScript food)
+    private void HandleEating(Food food)
     {
         if(currentMission == null) return;
-        if(currentMission.ingredient.GetComponent<FoodScript>().type != food.type) {
+        if(currentMission.ingredient != food) {
             AudioSource.PlayClipAtPoint(missionFailed, sheep.transform.position, 1.5f);
             sheep.GetComponentInChildren<Animator>().Play("MissionFailed");
             ingredientImage.sprite = hex;

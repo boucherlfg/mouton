@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
+public class OnTouchedGround : BaseEvent {}
 public class FootScript : MonoBehaviour {
-    public static event Action TouchedGround;
     private Collider2D _collider2D;
 
     void Start() {
@@ -15,12 +15,12 @@ public class FootScript : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other) {
         if(!other.CompareTag("Ground")) return;
         if(LadderScript.ladderCount > 0) return;
-        TouchedGround?.Invoke();
+        ServiceManager.Instance.Get<OnTouchedGround>().Invoke();
     }
     void OnCollisionEnter2D(Collision2D other) {
         if(!other.gameObject.CompareTag("Ground")) return;
         if(LadderScript.ladderCount > 0) return;
-        TouchedGround?.Invoke();
+        ServiceManager.Instance.Get<OnTouchedGround>().Invoke();
     }
 
 }

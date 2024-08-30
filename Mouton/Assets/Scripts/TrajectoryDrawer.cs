@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class TrajectoryDrawer : MonoBehaviour {
-    public static bool Activated = false;
     private InputService _input; 
     
     [SerializeField] private LineRenderer trajectoryRenderer;

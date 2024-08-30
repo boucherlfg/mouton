@@ -391,9 +391,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a3caacd9de47a478b767eee4c6b22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredientPrefab: {fileID: 6588101436552229053, guid: 5791e63bfd1a9c54982fd0d1699a9546, type: 3}
+  foodPrefab: {fileID: 6588101436552229053, guid: 8aa8cd09360416b4a9176d3844709e55, type: 3}
   ingredientSpawnDelay: 5
   ingredients:
-  - {fileID: 6588101436552229053, guid: 5791e63bfd1a9c54982fd0d1699a9546, type: 3}
+  - {fileID: 11400000, guid: 56c5ca498df5c5143b331ce8f72bab87, type: 2}
   spawnRate: 10
 --- !u!1 &645271424202848560
 GameObject:

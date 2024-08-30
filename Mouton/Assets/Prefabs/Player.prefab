@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 12
+  gravityScale: 2.5
   jumpSound: {fileID: 8300000, guid: a7bb54387dec00f4cb4732752816efda, type: 3}
   landSound: {fileID: 8300000, guid: 3a299dcc642e5fc4492fa2a0de952c72, type: 3}
   isJumping: 0

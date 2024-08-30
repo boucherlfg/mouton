@@ -20,13 +20,13 @@ public class JumpScript : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         inputService = ServiceManager.Instance.Get<InputService>();
         inputService.Jumped += HandleJump;
-        FootScript.TouchedGround += HandleTouchedGround;
+        ServiceManager.Instance.Get<OnTouchedGround>().Subscribe(HandleTouchedGround);
         _rigidbody2D.gravityScale = gravityScale;
     }
 
     void OnDestroy() {
         inputService.Jumped -= HandleJump;
-        FootScript.TouchedGround -= HandleTouchedGround;
+        ServiceManager.Instance.Get<OnTouchedGround>().Unsubscribe(HandleTouchedGround);
     }
 
     void HandleTouchedGround() {

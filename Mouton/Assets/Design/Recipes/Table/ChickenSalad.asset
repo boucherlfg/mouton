@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a463f013505a744b81bdb52195e075, type: 3}
+  m_Name: ChickenSalad
+  m_EditorClassIdentifier: 
+  prepTime: 3
+  inputs:
+  - {fileID: 11400000, guid: 707b50ef24cbf8a41af1847ca0edc90d, type: 2}
+  - {fileID: 11400000, guid: 0eafea1f3aca9b24fbaa68f09f8b552d, type: 2}
+  - {fileID: 11400000, guid: a47143f7e9fd0734f8bfff0adafd8725, type: 2}
+  output: {fileID: 11400000, guid: b9d34023736203e45b3d8bff91de4a6c, type: 2}

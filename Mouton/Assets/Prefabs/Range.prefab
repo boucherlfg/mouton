@@ -46,10 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c984ff34b74eb2439096421a0281eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goodRecipe: {fileID: 8300000, guid: caec858a42cf23d4ba3b07c8ad4470dd, type: 3}
+  foodPrefab: {fileID: 6588101436552229053, guid: 8aa8cd09360416b4a9176d3844709e55, type: 3}
+  ingredientPrefab: {fileID: 6588101436552229053, guid: 5791e63bfd1a9c54982fd0d1699a9546, type: 3}
+  goodRecipe: {fileID: 8300000, guid: 298775abb990c624cae34b57a2eeaec0, type: 3}
   badRecipe: {fileID: 8300000, guid: 95b0c38da9cc64f4ea97842a8bc2e8f6, type: 3}
   placeItem: {fileID: 8300000, guid: cebe015e521c8fb4f94fa2eb84233e0c, type: 3}
-  done: {fileID: 8300000, guid: d55861b47f48c24428884dc6a83280b5, type: 3}
+  done: {fileID: 8300000, guid: c2ba38ef752ab3e418d80951ac24449a, type: 3}
   recipes:
   - {fileID: 11400000, guid: 0544d0631f28fe3419117168a6a24621, type: 2}
   - {fileID: 11400000, guid: c81d1e5f95423b04494567b42f058001, type: 2}
@@ -57,7 +59,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e58377a9598495d44911c28c4bd8dd05, type: 2}
   - {fileID: 11400000, guid: f39b11ff85b628c4aa0d30e41388e87d, type: 2}
   - {fileID: 11400000, guid: 18d63c5bfbe985f48bce49895a53a50a, type: 2}
-  defaultRecipe: {fileID: 11400000, guid: baf41b6de0fe38845a03ad7b75697957, type: 2}
 --- !u!61 &4001610956267972891
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,8 +176,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1777388045
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -1201008036, guid: a7521b06e1286a847af0ad39781947d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

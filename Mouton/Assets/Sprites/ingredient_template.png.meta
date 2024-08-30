@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ingredient_template_0
+      name: Wheat
       rect:
         serializedVersion: 2
         x: 0
@@ -131,7 +131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_1
+      name: Tomato
       rect:
         serializedVersion: 2
         x: 17
@@ -152,7 +152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_2
+      name: Lettuce
       rect:
         serializedVersion: 2
         x: 34
@@ -173,7 +173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_3
+      name: Cheese
       rect:
         serializedVersion: 2
         x: 51
@@ -194,7 +194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_4
+      name: Chicken
       rect:
         serializedVersion: 2
         x: 68
@@ -215,7 +215,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_5
+      name: Bread
       rect:
         serializedVersion: 2
         x: 85
@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_6
+      name: Spaghetti
       rect:
         serializedVersion: 2
         x: 102
@@ -257,7 +257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_7
+      name: SlicedTomato
       rect:
         serializedVersion: 2
         x: 119
@@ -299,7 +299,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_9
+      name: TomatoSauce
       rect:
         serializedVersion: 2
         x: 17
@@ -320,7 +320,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_10
+      name: TomatoSalad
       rect:
         serializedVersion: 2
         x: 34
@@ -341,7 +341,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_11
+      name: GratedCheese
       rect:
         serializedVersion: 2
         x: 51
@@ -362,7 +362,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_12
+      name: CheeseSlice
       rect:
         serializedVersion: 2
         x: 68
@@ -383,7 +383,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_13
+      name: BreadedChicken
       rect:
         serializedVersion: 2
         x: 85
@@ -404,7 +404,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_14
+      name: GrilledChicken
       rect:
         serializedVersion: 2
         x: 102
@@ -425,7 +425,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_15
+      name: Bolognaise
       rect:
         serializedVersion: 2
         x: 119
@@ -446,7 +446,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_16
+      name: ChickenSalad
       rect:
         serializedVersion: 2
         x: 0
@@ -467,7 +467,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_17
+      name: ChickenBurger
       rect:
         serializedVersion: 2
         x: 17
@@ -488,7 +488,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_18
+      name: Stem
       rect:
         serializedVersion: 2
         x: 0
@@ -509,7 +509,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_21
+      name: Platform
       rect:
         serializedVersion: 2
         x: 51
@@ -551,7 +551,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_25
+      name: Wool
       rect:
         serializedVersion: 2
         x: 0
@@ -572,7 +572,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_27
+      name: Ladder
       rect:
         serializedVersion: 2
         x: 17
@@ -614,7 +614,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ingredient_template_19
+      name: Block
       rect:
         serializedVersion: 2
         x: 0
@@ -622,7 +622,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -645,42 +645,42 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ingredient_template_0: 1777633394
-      ingredient_template_1: -2025672160
-      ingredient_template_10: -474616433
-      ingredient_template_11: -727476753
-      ingredient_template_12: 2144546317
-      ingredient_template_13: -341909483
-      ingredient_template_14: -676324394
-      ingredient_template_15: -1873830462
-      ingredient_template_16: -772950145
-      ingredient_template_17: 1055091780
-      ingredient_template_18: 1860470195
-      ingredient_template_19: 457324028
-      ingredient_template_2: -11029867
+      Block: 457324028
+      Bolognaise: -1873830462
+      Bread: -1514036389
+      BreadedChicken: -341909483
+      Cheese: -373490758
+      CheeseSlice: 2144546317
+      Chicken: -1334537499
+      ChickenBurger: 1055091780
+      ChickenSalad: -772950145
+      GratedCheese: -727476753
+      GrilledChicken: -676324394
+      Ladder: -374369113
+      Lettuce: -11029867
+      Platform: -1588911144
+      SlicedTomato: -409077080
+      Spaghetti: -1926799515
+      Stem: 1860470195
+      Tomato: -2025672160
+      TomatoSalad: -474616433
+      TomatoSauce: -1881455641
+      Wheat: 1777633394
+      Wool: 990801876
       ingredient_template_20: 1053807476
-      ingredient_template_21: -1588911144
       ingredient_template_22: 24700646
       ingredient_template_23: 42537382
       ingredient_template_24: 1145781758
-      ingredient_template_25: 990801876
       ingredient_template_26: -1651869281
-      ingredient_template_27: -374369113
       ingredient_template_28: -114042615
       ingredient_template_29: -524065813
-      ingredient_template_3: -373490758
       ingredient_template_30: -1647631834
       ingredient_template_31: -2122458493
       ingredient_template_32: -1851932345
       ingredient_template_33: 1645672779
       ingredient_template_34: 140668973
       ingredient_template_35: 317237329
-      ingredient_template_4: -1334537499
-      ingredient_template_5: -1514036389
-      ingredient_template_6: -1926799515
-      ingredient_template_7: -409077080
       ingredient_template_8: -458079794
-      ingredient_template_9: -1881455641
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

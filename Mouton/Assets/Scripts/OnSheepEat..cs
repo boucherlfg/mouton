@@ -1,3 +1,4 @@
-public class OnSheepEat : BaseEvent<FoodScript> {
+public class OnSheepEat : BaseEvent<Food> 
+{
 
 }

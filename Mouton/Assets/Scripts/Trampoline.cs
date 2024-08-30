@@ -7,7 +7,7 @@ public class Trampoline : MonoBehaviour
     public float jumpHeight = 20;
     void OnCollisionEnter2D(Collision2D collision) {
         if(!collision.gameObject.TryGetComponent(out FootScript foot) 
-            && !collision.gameObject.GetComponent<Ingredient>() 
+            && !collision.gameObject.GetComponent<IngredientScript>() 
             && !collision.gameObject.GetComponent<FoodScript>()) return;
 
         Debug.Log("collision works");
@@ -18,7 +18,7 @@ public class Trampoline : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision) {
         if(!collision.gameObject.TryGetComponent(out FootScript foot) 
-            && !collision.gameObject.GetComponent<Ingredient>() 
+            && !collision.gameObject.GetComponent<IngredientScript>() 
             && !collision.gameObject.GetComponent<FoodScript>()) return;
 
         Debug.Log("trigger works");
